@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+## Run Composer Commands on based on the Theme path defined in docksal.env
+##
+## Usage: fin site-composer [arguments]
+##
+
+# Abort if anything fails
+set -e
+
+COMMAND="$@"
+COMPOSER_PATH=${DOCROOT}/wp-content/;
+
+cd $PROJECT_ROOT/$COMPOSER_PATH
+
+echo "Running Composer in $PROJECT_ROOT/$THEME_PATH"
+echo
+fin composer ${COMMAND}

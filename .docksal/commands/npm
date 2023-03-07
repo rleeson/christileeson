@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+## Run NPM Commands on the theme, using a requested version
+##
+## Dependency environment variable(s):
+##  - WP_THEME_RELATIVE_PATH: Directory path relative to wp-content/themes, i.e. client-theme or custom/client-theme
+##
+## Usage: fin npm [arguments]
+
+# Abort if anything fails
+set -e
+
+COMMAND="$@"
+TARGET_CONTAINER=cli
+TARGET_PATH="${PROJECT_ROOT}/${DOCROOT}/${WP_THEME_RELATIVE_PATH}"
+TARGET_PATH_CONTAINER="/var/www/${DOCROOT}/${WP_THEME_RELATIVE_PATH}"
+
+fin exec --in="${TARGET_CONTAINER}" "cd ${TARGET_PATH_CONTAINER}; sudo chown docker:dialout node_modules"
+
+if [ -f "${TARGET_PATH}/.nvmrc" ]; then
+    echo "NVM requested version..."
+    fin exec --in=${TARGET_CONTAINER} "cd ${TARGET_PATH_CONTAINER};nvm install"
+	fin exec --in=${TARGET_CONTAINER} "cd ${TARGET_PATH_CONTAINER};nvm use;npm $COMMAND"
+else
+	fin exec --in=${TARGET_CONTAINER} "cd ${TARGET_PATH_CONTAINER};npm $COMMAND"
+fi

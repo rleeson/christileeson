@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+#: exec_target = cli
+
+## Check and setup site directories and config files
+##
+## Usage: fin scaffold-site
+
+# Abort if anything fails
+set -e
+
+#-------------------------- BGN: Settings --------------------------------
+
+red='\033[0;31m'
+yellow='\033[1;33m'
+NC='\033[0m'
+
+
+# PROJECT_ROOT and DOCROOT are set as env variables in CLI, local to the CLI
+DOCROOT_PATH="${PROJECT_ROOT}/${DOCROOT}"
+if [[ "$DOCROOT" == "." ]]; then
+	DOCROOT_PATH="${PROJECT_ROOT}"
+fi
+THEME_PATH="${DOCROOT_PATH}/${WP_THEME_RELATIVE_PATH}"
+UPLOADS_PATH="${DOCROOT_PATH}/wp-content/uploads"
+
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- BGN: Functions --------------------------------
+
+check_site_directory() {
+	echo -e "Ensure site directory ${yellow}${DOCROOT_PATH}${NC} exists."
+
+	cd "$PROJECT_ROOT"
+	if [ ! -d "${DOCROOT_PATH}" ]; then
+		mkdir -p "${DOCROOT_PATH}"
+	fi
+}
+
+# Copy default wp-config.file
+copy_config() {
+	CONFIG_PATH="${PROJECT_ROOT}/.docksal/etc/wordpress/wp-config-local.php"
+	echo -e "Using WordPress configuration template from ${yellow}${CONFIG_PATH}${NC}"
+
+	cd "$DOCROOT_PATH"
+	rm -f wp-config.php
+	cp "${CONFIG_PATH}" wp-config.php
+}
+
+# Ensure the Themes node_modules directory exists, otherwise `fin npm` commands will fail
+ensure_volumes_mount_points () {
+	NODE_MODULES_PATH="${PROJECT_ROOT}/${WP_THEME_RELATIVE_PATH}/node_modules"
+	if [[ ! -d "${NODE_MODULES_PATH}" ]]; then
+		echo -e "Adding node_modules directory at ${yellow}${NODE_MODULES_PATH}${NC}."
+		mkdir "${NODE_MODULES_PATH}"
+	fi
+}
+
+# Fix file/folder permissions
+fix_permissions() {
+	echo -e "Making uploads directory ${yellow}${UPLOADS_PATH}${NC} writable."
+
+	if [ ! -d "${UPLOADS_PATH}" ]; then
+		mkdir -p "${UPLOADS_PATH}"
+	fi
+	chmod 755 "${UPLOADS_PATH}"
+}
+
+#-------------------------- END: Functions --------------------------------
+
+#-------------------------- BGN: Execution --------------------------------
+
+check_site_directory
+echo
+copy_config
+echo
+fix_permissions
+echo
+ensure_volumes_mount_points
+echo
+
+#-------------------------- END: Execution --------------------------------

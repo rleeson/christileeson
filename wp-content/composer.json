@@ -1,0 +1,68 @@
+{
+  "name": "christileeson/wordpress-site",
+  "type": "wordpress-plugin",
+  "minimum-stability": "dev",
+  "description": "WordPress libraries for the Christi Leeson Portfolio site.",
+  "keywords": [
+	"WordPress"
+  ],
+  "homepage": "https://github.com/rleeson/christileeson",
+  "license": "GPL-2.0+",
+  "authors": [
+	{
+	  "name": "Ryan Leeson",
+	  "homepage": "https://github.com/rleeson/"
+	}
+  ],
+  "repositories": [
+	{
+	  "type": "composer",
+	  "url": "https://wpackagist.org"
+	}
+  ],
+  "config": {
+	"vendor-dir": "mu-plugins/vendor",
+	"preferred-install": "dist",
+	"sort-packages": true,
+	"platform-check": false,
+	"platform": {
+	  "php": "8.0"
+	},
+	"allow-plugins": {
+	  "composer/installers": true,
+	  "dealerdirect/phpcodesniffer-composer-installer": true,
+	  "ffraenz/private-composer-installer": true
+	}
+  },
+  "require": {
+    "composer/installers": "2.x-dev",
+    "kanopi/pack-asset-loader": "dev-main",
+    "wp-cli/wp-cli-bundle": "2.6.x-dev",
+    "wpackagist-plugin/better-wp-security": "^8.1.4",
+    "wpackagist-plugin/redirection": "^5.3.6",
+    "wpackagist-plugin/wordpress-seo": "^20.1",
+    "wpackagist-plugin/wp-smushit": "^3.12.4"
+  },
+  "extra": {
+	"installer-paths": {
+	  "mu-plugins/{$name}/": [],
+	  "plugins/{$name}/": [
+		"type:wordpress-plugin"
+	  ]
+	}
+  },
+  "autoload": {
+	"psr-4": {
+	  "CL\\Theme\\": "themes/custom/christileeson/src/"
+	}
+  },
+  "require-dev": {
+    "automattic/vipwpcs": "dev-develop"
+  },
+  "scripts": {
+	"compile-theme-translations": "./mu-plugins/vendor/bin/wp i18n make-mo themes/custom/christileeson/languages",
+	"phpcs": "./mu-plugins/vendor/bin/phpcs --standard=\"../.phpcs.xml.dist\" ./",
+	"make-theme-translations": "./mu-plugins/vendor/bin/wp i18n make-pot themes/custom/christileeson themes/custom/christileeson/languages/christileeson.pot",
+	"update-theme-translations": "./mu-plugins/vendor/bin/wp i18n update-po themes/custom/christileeson/languages/christileeson.pot themes/custom/christileeson/languages"
+  }
+}

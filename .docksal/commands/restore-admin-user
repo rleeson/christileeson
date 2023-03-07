@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#: exec_target = cli
+#
+## Restore access to the site instance for the local admin user
+##
+## Usage: fin restore-admin-user
+
+DOCROOT_PATH="${PROJECT_ROOT}/${DOCROOT}"
+cd $DOCROOT_PATH
+
+LOCAL_ADMIN_EXISTENCE_CHECK="$(wp user get $WP_ADMIN_USER --field=ID 2> /dev/null)"
+if [[ -z $LOCAL_ADMIN_EXISTENCE_CHECK ]] ; then
+    echo "User $WP_ADMIN_USER does not exist, adding local user."
+    wp user create $WP_ADMIN_USER $WP_ADMIN_EMAIL --role=administrator --user_pass=$WP_ADMIN_PASS --color
+else
+    echo "User $WP_ADMIN_USER already exists, updating password."
+    wp user update $WP_ADMIN_USER --user_email=$WP_ADMIN_EMAIL --role=administrator --user_pass=$WP_ADMIN_PASS --skip-email --color
+fi

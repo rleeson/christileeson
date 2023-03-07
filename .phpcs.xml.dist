@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ruleset name="christileeson">
+    <description>PHPCS Scan of Custom Plugin and Theme Code with Automattic's VIP Go ruleset</description>
+
+    <arg name="extensions" value="php"/>
+    <arg name="basepath" value="./"/><!-- Strip the file paths down to the relevant bit -->
+    <arg name="parallel" value="8"/><!-- Enables parallel processing when available for faster results. -->
+
+	<!-- Uploads folder is excluded -->
+	<exclude-pattern>*/uploads/*</exclude-pattern>
+
+	<!-- Composer vendor/ directory is excluded -->
+	<exclude-pattern>*/mu-plugins/vendor/*</exclude-pattern>
+
+	<!-- All root mu-plugins inclusions are scanned -->
+	<include-pattern>*/mu-plugins/*.php</include-pattern>
+
+	<!-- Only Custom files, except code under node_modules (vendor code) -->
+	<exclude-pattern type="relative">^themes/(?!custom).+</exclude-pattern>
+	<include-pattern>*/themes/custom/christileeson/*</include-pattern>
+	<exclude-pattern>*/themes/custom/christileeson/node_modules/*</exclude-pattern>
+
+    <!-- WordPress VIP Go Standards: Extends WordPress Code Style -->
+    <rule ref="WordPress-VIP-Go"></rule>
+</ruleset>

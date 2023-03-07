@@ -1,0 +1,35 @@
+version: "2.1"
+
+services:
+  web:
+    extends:
+      file: ${HOME}/.docksal/stacks/services.yml
+      service: nginx
+    environment:
+      - WP_THEME_ASSETS_HOST_SUBDOMAIN
+      - WP_THEME_RELATIVE_PATH
+      - NGINX_VHOST_PRESET=wordpress
+  cli:
+    environment:
+      - COMPOSER_MEMORY_LIMIT=-1
+      - WP_THEME_SLUG
+      - WP_ADMIN_USER
+      - WP_ADMIN_PASS
+      - WP_ADMIN_EMAIL
+      - WP_THEME_ASSETS_HOST_SUBDOMAIN
+      - WP_THEME_RELATIVE_PATH
+      - WP_PLUGIN_COMPOSER_RELATIVE_PATH
+      - COMPOSER_AUTH
+      - DB_HOST=db
+      - DB_NAME=default
+      - DB_USER=user
+      - DB_PASSWORD=user
+      - VIRTUAL_HOST
+    expose:
+      - 4400
+    labels:
+      - io.docksal.virtual-host=${WP_THEME_ASSETS_HOST_SUBDOMAIN}.${VIRTUAL_HOST}
+      - io.docksal.virtual-port=4400
+  db:
+    volumes:
+      - ${PROJECT_ROOT}/db:/docker-entrypoint-initdb.d:ro

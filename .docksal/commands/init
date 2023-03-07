@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+## Initialize a Docksal powered WordPress site
+##
+## Usage: fin init
+
+# Abort if anything fails
+set -e
+
+#-------------------------- Settings --------------------------------
+
+# PROJECT_ROOT is passed from fin.
+# The following variables are configured in the '.env' file: DOCROOT, VIRTUAL_HOST.
+
+DOCROOT_PATH="${PROJECT_ROOT}/${DOCROOT}"
+
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- Helper functions --------------------------------
+
+# Console colors
+red='\033[0;31m'
+green='\033[0;32m'
+green_bg='\033[42m'
+yellow='\033[1;33m'
+NC='\033[0m'
+
+echo-red () { echo -e "${red}$1${NC}"; }
+echo-green () { echo -e "${green}$1${NC}"; }
+echo-green-bg () { echo -e "${green_bg}$1${NC}"; }
+echo-yellow () { echo -e "${yellow}$1${NC}"; }
+
+is_windows ()
+{
+	local res=$(uname | grep 'CYGWIN_NT')
+	if [[ "$res" != "" ]]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+#-------------------------- END: Helper functions --------------------------------
+
+#-------------------------- Functions --------------------------------
+
+#-------------------------- END: Functions --------------------------------
+
+#-------------------------- Execution --------------------------------
+
+if [[ "$PROJECT_ROOT" == "" ]]; then
+	echo-red "\$PROJECT_ROOT is not set"
+	exit 1
+fi
+
+if [[ $DOCKER_RUNNING == "true" ]]; then
+	echo -e "${green_bg} Step 1 ${NC}${green} Recreating services...${NC}"
+	fin reset -f
+else
+	echo -e "${green_bg} Step 1 ${NC}${green} Creating services...${NC}"
+	fin up
+fi
+
+echo "Waiting 10s for MySQL to initialize...";
+sleep 10
+
+if is_windows; then
+	echo-green "Add ${VIRTUAL_HOST} to your hosts file (/etc/hosts), e.g.:"
+	echo-green "192.168.64.100  ${VIRTUAL_HOST}"
+	echo
+fi
+
+echo -e "${green_bg} Step 2 ${NC}${green} Initializing site...${NC}"
+fin init-site
+echo -e "${green_bg} Step 3 ${NC}${green} Initializing front-end and theme assets...${NC}"
+fin init-assets
+echo -e "${green_bg} Setup Complete! ${NC}"
+echo
+echo -e "${green} WordPress Site:${NC} ${yellow}https://${VIRTUAL_HOST}${NC}"
+
+
+#-------------------------- END: Execution --------------------------------

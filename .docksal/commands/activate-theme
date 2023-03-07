@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#: exec_target = cli
+#
+## Activate the project theme on the local instance
+##
+## Usage: fin activate-theme
+
+DOCROOT_PATH="${PROJECT_ROOT}/${DOCROOT}"
+cd $DOCROOT_PATH
+
+wp theme is-installed ${WP_THEME_SLUG} 2> /dev/null
+IS_THEME_INSTALLED="$?"
+if [[ 0 -eq $IS_THEME_INSTALLED ]] ; then
+    wp theme is-active ${WP_THEME_SLUG} 2> /dev/null
+    IS_THEME_ACTIVE="$?"
+    if [[ 1 -eq ${IS_THEME_ACTIVE} ]] ; then
+        echo "Activating theme..."
+        wp theme activate ${WP_THEME_SLUG}
+    fi
+    echo "Theme at ${WP_THEME_SLUG} is activated."
+else
+    echo "Theme (${WP_THEME_SLUG}) is not found."
+fi

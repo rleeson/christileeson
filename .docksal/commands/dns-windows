@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+## Add DNS entries on Windows if DNS doesn't work
+##
+## Usage: fin dns-windows
+
+cd ${PROJECT_ROOT}
+
+fin hosts remove $VIRTUAL_HOST
+fin hosts add $VIRTUAL_HOST

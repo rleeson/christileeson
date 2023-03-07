@@ -1,0 +1,9 @@
+@use 'shared/variables' as *;
+
+$root_path: '../' !default;
+$static_image_path: $root_path + 'static/images/';
+
+:root {
+	// Images
+	--image--test: url('#{$static_image_path}test.png');
+}

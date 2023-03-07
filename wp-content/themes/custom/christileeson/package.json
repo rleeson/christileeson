@@ -1,0 +1,34 @@
+{
+  "name": "christileeson-wp-theme",
+  "repository": {
+    "type": "wordpress-theme-custom",
+    "url": "https://github.com/rleeson/christileeson"
+  },
+  "private": true,
+  "scripts": {
+    "production": "kanopi-pack-react react",
+    "development": "kanopi-pack-react react development"
+  },
+  "devDependencies": {
+    "@kanopi/pack": "2.0.1",
+    "@kanopi/pack-react": "2.0.2",
+    "@types/react": "17.0.2",
+    "@types/webpack-env": "1.18.0",
+    "@types/wordpress__block-editor": "11.0.1",
+    "@types/wordpress__blocks": "12.0.3",
+    "@types/wordpress__components": "23.0.1",
+    "@types/wordpress__data": "6.0.2",
+    "@wordpress/block-editor": "10.5.0",
+    "@wordpress/blocks": "11.21.0",
+    "@wordpress/components": "22.1.0",
+    "@wordpress/data": "7.6.0",
+    "@wordpress/element": "4.20.0",
+    "@wordpress/i18n": "4.22.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "engines": {
+    "node": ">=16.19",
+    "npm": ">=8.19"
+  }
+}

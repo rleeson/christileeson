@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Run the theme Webpack Dev Server
+##
+## Usage: fin init
+
+fin npm run production

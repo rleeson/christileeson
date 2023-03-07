@@ -1,0 +1,36 @@
+{
+    "name": "christileeson/docksal-wordpress",
+    "description": "WordPress for local development container",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
+    "require-dev": {
+        "php": "~8.0.0",
+        "johnpbloch/wordpress-core": "6.1.1"
+    },
+    "config": {
+        "vendor-dir": "vendor",
+        "preferred-install": "dist",
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "platform": {
+            "php": "8.0"
+        }
+    },
+    "scripts": {
+        "move-core-files": [
+            "rsync -az --delete --exclude-from='core_exclude_files.txt' vendor/johnpbloch/wordpress-core/* ../../../",
+            "echo 'Composer installed Wordpress Core to the root directory'"
+        ],
+        "post-install-cmd": [
+            "@move-core-files"
+        ],
+        "post-update-cmd": [
+            "@move-core-files"
+        ]
+    }
+}

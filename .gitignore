@@ -1,0 +1,80 @@
+*~
+.DS_Store
+.svn
+.cvs
+.htaccess
+*.bak
+*.swp
+Thumbs.db
+
+# NodeJS/Compiled App Files
+node_modules
+.sass-cache
+npm-debug.log
+
+# Docksal/Composer local
+.docksal/docksal-local.env
+.docksal/docksal-local.yml
+.docksal/etc/composer/vendor/
+*.log
+*.sql
+/db
+
+# Code Editor and IDE files
+.idea
+.vscode
+
+# Ignore WP Core
+/index.php
+license.txt
+readme.html
+wp-activate.php
+wp-app.php
+wp-atom.php
+wp-blog-header.php
+wp-comments-post.php
+wp-commentsrss2.php
+wp-config.php
+wp-config-sample.php
+wp-cron.php
+wp-feed.php
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-rdf.php
+wp-rss.php
+wp-rss2.php
+wp-pass.php
+wp-register.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
+wp-admin
+wp-includes
+wp-content/mu-plugins/*
+wp-content/uploads
+wp-content/plugins/*
+wp-content/themes/*
+
+# Unignore custom plugins as needed
+# Unignore wp-content/themes/custom/
+!wp-content/composer.json
+!wp-content/composer.lock
+!wp-content/themes/custom
+!wp-content/plugins/christileeson
+
+# ignore OS generated files
+ehthumbs.db
+
+# ignore Editor files
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+
+# Ignore compiled files
+wp-content/themes/custom/christileeson/assets/dist
+
+# Unignore Plugin List
+!wp-content/mu-plugins/000-app-loader.php

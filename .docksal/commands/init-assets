@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Initialize NPM assets
+##
+## Usage: fin init-assets
+
+fin npm ci

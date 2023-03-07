@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+
+## Refresh the site database from WPEngine
+##
+## Dependency environment variable(s):
+##  - REFRESH_DOMAINS: Hostnames with/without protocol (must match REPLACEMENT_DOMAIN host pattern) to search in the database
+##  - REFRESH_ENVIRONMENT: WPEngine Environment Name, maps to the SSH connection and directory structure
+##  - REPLACEMENT_DOMAIN: Hostname with/without protocol (must match REFRESH_ENVIRONMENT host pattern) to replace in the database
+##
+## Usage: fin refresh
+
+# Abort if anything fails
+set -e
+
+cd ${PROJECT_ROOT}/${DOCROOT}
+
+# Console colors
+red='\033[0;31m'
+green='\033[0;32m'
+green_bg='\033[42m'
+yellow='\033[1;33m'
+NC='\033[0m'
+
+echo-red () { echo -e "${red}$1${NC}"; }
+echo-green () { echo -e "${green}$1${NC}"; }
+echo-green-bg () { echo -e "${green_bg}$1${NC}"; }
+echo-yellow () { echo -e "${yellow}$1${NC}"; }
+
+# Environment vars set in docksal.env or local equivalent.
+WPE_SITE_DIRECTORY="/sites/${REFRESH_ENVIRONMENT}"
+DB_FILE=".docksal/backup/${REFRESH_ENVIRONMENT}.sql"
+DB_FILE_LOCAL="${PROJECT_ROOT}/${DB_FILE}"
+DB_FILE_WEB="/var/www/${DB_FILE}"
+DB_FILE_WPE="${WPE_SITE_DIRECTORY}/${REFRESH_ENVIRONMENT}.sql"
+REPLACED_DOMAINS=($(echo ${REFRESH_DOMAINS} | tr ";" "\n"))
+SSH_URL="${REFRESH_ENVIRONMENT}@${REFRESH_ENVIRONMENT}.ssh.wpengine.net"
+REPLACEMENT_DOMAIN=https://${VIRTUAL_HOST}
+
+read_database() {
+    echo
+    echo-red "Removing local database export files"
+    echo
+    fin exec rm -rf ${DB_FILE_WEB}*
+
+    echo-green "=== Retrieving Database Backup from WPEngine ==="
+    echo-yellow "WPEngine Environment Name: ${REFRESH_ENVIRONMENT}"
+    echo "Using ssh on the server to access WP-CLI on WPEngine. This only works if your SSH key is added to WPEngine and this instance (fin ssh-key add <ssh_file>)."
+    echo "If you use multiple local instances with different SSH keys, you may need to clear them all with (fin ssh-key rm) then add this sites key to avoid (publickey) errors."
+    echo
+    echo-green "Exporting the remote database..."
+    fin exec ssh ${SSH_URL} "cd ${WPE_SITE_DIRECTORY}; wp db export ${DB_FILE_WPE} --no-tablespaces=true --skip-plugins --skip-themes --skip-packages"
+
+    echo-green "Downloading Database..."
+    fin exec rsync -azv ${SSH_URL}:${DB_FILE_WPE} ${DB_FILE_WEB}
+
+    echo-green "Database downloaded. Removing remote DB backup file at ${yellow}${DB_FILE_WPE}${NC}..."
+    fin exec ssh ${SSH_URL} "rm ${DB_FILE_WPE}"
+}
+
+echo-green "Refreshing the local database for WP Engine..."
+if [ ! -f $DB_FILE_LOCAL ] || [ ! -z $(find $DB_FILE_LOCAL -mmin +60) ] ; then
+    if [ ! -f $DB_FILE_LOCAL ]; then
+        echo "Database file does not exist, retrieving a fresh export."
+    elif [ ! -z $(fin exec find $DB_FILE_WEB -mmin +60) ]; then
+        echo "Database file is older than 1 hour, retrieving a fresh export."
+    fi
+
+    read_database
+else
+    echo "Using current database file, less than an hour old."
+fi
+
+echo
+echo-green "Importing Database..."
+fin wp db import ${DB_FILE_WEB} --skip-plugins --skip-themes --skip-packages
+
+echo
+echo "Run a search and replace for any WPEngine and Production domains..."
+
+for i in "${REPLACED_DOMAINS[@]}"; do
+    echo
+    echo -e "WP-CLI Search & Replace ${yellow}${i}${NC} with ${yellow}${REPLACEMENT_DOMAIN}${NC}"
+    fin wp search-replace "${i}" "${REPLACEMENT_DOMAIN}" --all-tables-with-prefix
+done
+
+echo
+echo-green "Flushing permalinks"
+fin wp rewrite flush --hard
+
+## The Following scripts are optional to update access to the admin user locally and ensure the expected theme is enabled
+## Remove the remaining lines if you are not using the other scripts
+
+echo
+echo-green "Verify admin user..."
+fin restore-admin-user
+
+echo
+echo-green "Verify project theme is active..."
+fin activate-theme

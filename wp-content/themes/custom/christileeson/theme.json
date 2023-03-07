@@ -1,0 +1,36 @@
+{
+    "version": 2,
+    "settings": {
+        "appearanceTools": false,
+        "color": {
+            "background": false,
+            "defaultPalette": false,
+            "link": false,
+            "palette": [
+                {
+                    "name": "Black",
+                    "slug": "black",
+                    "color": "#000000"
+                },
+                {
+                    "name": "White",
+                    "slug": "white",
+                    "color": "#ffffff"
+                }
+            ]
+        },
+        "layout": {
+            "contentSize": "100%",
+            "wideSize": "1000px"
+        },
+        "typography": {
+          "customFontSize": false,
+          "lineHeight": false,
+          "dropCap": false,
+          "fontStyle": false,
+          "fontWeight": false,
+          "letterSpacing": false,
+          "textDecoration": false
+        }
+    }
+}

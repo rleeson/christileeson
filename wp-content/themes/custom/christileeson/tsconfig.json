@@ -1,0 +1,45 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"jsx": "react",
+		"module": "es2015",
+		"moduleResolution": "node",
+		"noImplicitAny": false,
+		"outDir": "./tsbuild",
+		"resolveJsonModule": true,
+		"sourceMap": true,
+		"strict": true,
+		"target": "es5",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": [
+				"./assets/src/*"
+			]
+		},
+		"types": [
+			"wordpress__block-editor",
+			"wordpress__blocks",
+			"wordpress__components",
+			"wordpress__data",
+			"wordpress__keycodes",
+			"wordpress__notices",
+			"wordpress__rich-text",
+			"node",
+			"react",
+			"webpack-env"
+		],
+		"lib": [
+			"dom",
+			"es2019"
+		]
+	},
+	"files": [
+		"./assets/src/ts/project-global-types.d.ts"
+	],
+	"include": [
+		"./assets/src/ts/**/*"
+	]
+}

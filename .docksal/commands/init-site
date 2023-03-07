@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+## Initialize/reinstall site
+##
+## Usage: fin init-site
+
+# Abort if anything fails
+set -e
+
+fin scaffold-site
+echo
+fin root-composer install
+echo
+fin site-composer install
+echo
