@@ -1,0 +1,65 @@
+@use '../common/functions.scss';
+@use '../mixins/sizes.scss';
+
+.header {
+	display: grid;
+	grid-template-columns: 120px 1fr;
+	padding: functions.pixelsToRem(20);
+	background-color: var(--header__background);
+
+	@include sizes.fullsize() {
+		grid-template-columns: 223px 1fr;
+		padding: functions.pixelsToRem(30);
+		border-bottom: solid .1rem var(--header__border);
+		background-color: var(--header__background-full);
+	}
+
+	&__logo {
+		&-link {
+			display: block;
+			height: functions.pixelsToRem(56);
+			background-image: var(--header__logo);
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+
+		@include sizes.fullsize() {
+			display: flex;
+			justify-content: center;
+            
+			&-link {
+				width: functions.pixelsToRem(175);
+				height: functions.pixelsToRem(76);
+				background-image: var(--header__logo-full);
+			}
+		}
+	}
+
+	&__controls {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+
+	.search__open {
+		display: none;
+	}
+
+	&__search {
+		display: none;
+	}
+
+	&__main-navigation {
+		display: none;
+	}
+
+	@include sizes.fullsize() {
+		.search__open {
+			display: block;
+		}
+    
+		&__main-navigation {
+			display: flex;
+		}
+	}
+}

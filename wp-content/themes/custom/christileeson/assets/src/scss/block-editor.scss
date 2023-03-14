@@ -3,7 +3,7 @@ Theme Name: Christi Leeson
 Theme URI: https://github.com/rleeson/christileeson
 Author: Ryan Leeson
 Author URI: https://github.com/rleeson/
-Description: Christi Leeson Portfolio Block Editor Theme
+Description: Christi Leeson Portfolio Block Editor Theme Styles
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
@@ -13,4 +13,4 @@ Tags: kanopi-pack, webpack, gutenberg, scss
 
 $asset_root: '../' !default;
 
-@use 'root_variables' with ($root_path: $asset_root);
+@use 'common/theme-variables' with ($root_path: $asset_root);

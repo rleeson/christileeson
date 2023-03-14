@@ -1,0 +1,51 @@
+@use '../common/functions.scss';
+@use '../mixins/sizes.scss';
+
+#mobile__navigation {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    
+	.mobile__menu-open {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: functions.pixelsToRem(45);
+		height: functions.pixelsToRem(32);
+		border-top: solid .1rem currentColor;
+		border-right: none 0;
+		border-bottom: solid .1rem currentColor;
+		border-left: none 0;
+		background-color: transparent;
+		color: var(--header__menu-toggle);
+
+		&:after {
+			content: ' ';
+			display: block;
+			width: 70%;
+			height: functions.pixelsToRem(1);
+			background: var(--header__menu-toggle);
+		}
+
+		&:hover, &:focus {
+			color: var(--header__menu-toggle-active);
+
+			&:after {
+				background: var(--header__menu-toggle-active);
+			}
+		}
+
+		&:focus, &:focus-visible {
+			outline: solid .2rem currentColor;
+			outline-offset: .2rem;
+		}
+	}
+
+	@include sizes.fullsize() {
+		display: none;
+	}
+}
+
+#mobile-menu {
+	display: none;
+}

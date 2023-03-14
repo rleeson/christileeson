@@ -13,4 +13,7 @@ Tags: kanopi-pack, webpack, gutenberg, scss
 
 $asset_root: '../' !default;
 
-@use 'root_variables' with ($root_path: $asset_root);
+@use 'common/theme-variables' with ($root_path: $asset_root);
+@use 'common/font-face' with ($root_path: $asset_root);
+
+@use 'structure'

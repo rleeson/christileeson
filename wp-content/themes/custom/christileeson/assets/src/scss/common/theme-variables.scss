@@ -1,0 +1,40 @@
+$root_path: '../' !default;
+$static_image_path: $root_path + 'static/images/';
+
+:root {
+	// Color export
+	--color__wf-border: #000000ff; 
+	--color__snow: #ffffffff; 
+	--color__night: #000000ff; 
+	--color__gold: #f2d98dff; 
+	--color__tangerine-saturated: #f27435ff; 
+	--color__tangerine-med: #f2884bff; 
+	--color__ocean-dk: #006a77ff; 
+	--color__ocean: #037f8cff; 
+	--color__ocean-md: #6ea1a6ff; 
+	--color__tropical-sky-dark: #006799ff; 
+	--color__trop-sky-md: #048abfff; 
+	--color__sunrise: #f2c299ff; 
+	--color__sunrise-light: #f8e7daff; 
+	--color__trop-sky-mdlt: #a8c3daff; 
+	--color__trop-sky-lt: #dcebf6ff; 
+	--color__pale-grey: #e1dddcff; 
+	--color__gold-lt: #fff0c3ff; 
+	--color__ocean-mdlt: #a2d8ddff; 
+	--color__ocean-lt: #d6edefff;
+
+	// Header
+	--header__background: var(--color__night);
+	--header__background-full: var(--color__snow);
+	--header__border: var(--color__pale-grey);
+	--header__logo: url('#{$static_image_path}christi-leeson-logo-mobile.png');
+	--header__logo-full: url('#{$static_image_path}christi-leeson-logo-full.png');
+	--header__menu-toggle: var(--color__snow);
+	--header__menu-toggle-active: var(--color__ocean-md);
+	--header__text: var(--color__snow);
+	--header__text-full: var(--color__night);
+
+	// Font Families
+	--font__body: Petrona, Arial, sans-serif;
+	--font__heading: Lato, Arial, sans-serif;
+}
