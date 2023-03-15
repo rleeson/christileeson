@@ -34,7 +34,10 @@ $static_image_path: $root_path + 'static/images/';
 	--header__text: var(--color__snow);
 	--header__text-full: var(--color__night);
 
+	// Cards
+	--cards__heading-color: var(--color__ocean-dk);
+
 	// Font Families
-	--font__body: Petrona, Arial, sans-serif;
-	--font__heading: Lato, Arial, sans-serif;
+	--font__body: Lato, Arial, sans-serif;
+	--font__heading: Petrona, Arial, sans-serif;
 }

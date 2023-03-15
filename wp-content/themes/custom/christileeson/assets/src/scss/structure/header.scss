@@ -1,5 +1,6 @@
-@use '../common/functions.scss';
-@use '../mixins/sizes.scss';
+@use '@/scss/common/functions.scss';
+@use '@/scss/mixins/elements.scss';
+@use '@/scss/mixins/sizes.scss';
 
 .header {
 	display: grid;
@@ -41,8 +42,44 @@
 		justify-content: flex-end;
 	}
 
+	&__main-navigation {
+		ul {
+			@include elements.list-reset();
+			display: flex;
+			flex-direction: row;
+			height: 100%; 
+			font-family: var(--font__heading);
+			font-size: functions.pixelsToRem(20);
+			font-weight: 600;
+			line-height: 1.2;
+		}
+		li {
+			display: block;
+		}
+		a {
+			display: flex;
+			align-items: center;
+			height: 100%;
+			padding: 0 1.25rem;
+			color: var(--header__text-full);
+			text-decoration: none;
+		}
+	}
+
 	.search__open {
+		@include elements.button-reset();
 		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 0 1.25rem;
+		cursor:pointer;
+
+		&:after {
+			content: 'O';
+			display: block;
+			width: 25px;
+			height: 25px;
+		}
 	}
 
 	&__search {
@@ -55,7 +92,7 @@
 
 	@include sizes.fullsize() {
 		.search__open {
-			display: block;
+			display: flex;
 		}
     
 		&__main-navigation {

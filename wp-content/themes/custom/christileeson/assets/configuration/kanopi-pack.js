@@ -30,6 +30,7 @@ module.exports = {
     "filePatterns": {
         "cssOutputPath": "css/[name].[contenthash].css",
         "entryPoints": {
+            "block-editor": "./assets/src/ts/block-editor.ts",
             "block-editor-theme": "./assets/src/scss/block-editor.scss",
             "main": "./assets/src/ts/main.ts",
             "theme": "./assets/src/scss/theme.scss"

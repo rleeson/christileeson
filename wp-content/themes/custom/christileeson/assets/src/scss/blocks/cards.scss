@@ -1,0 +1,40 @@
+@use '@/scss/common/functions.scss';
+@use '@/scss/mixins/elements.scss';
+@use '@/scss/mixins/sizes.scss';
+
+.card {
+	&__section {
+		display: grid;
+		grid-gap: functions.pixelsToRem(60);
+		padding: functions.pixelsToRem(60);
+
+		@include sizes.fullsize() {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	&__icon {
+		display: flex;
+		flex-direction: column;
+		gap: functions.pixelsToRem(10);
+		padding: functions.pixelsToRem(30);
+
+		& > * {
+			@include elements.reset();
+		}
+		h3 {
+			color: var(--cards__heading-color);
+			font-size: 2rem;
+			line-height: 1.2;
+		}
+		p {
+			line-height: 1.5;
+		}
+		figure, img {
+			padding-bottom: functions.pixelsToRem(30);
+		}
+		figure > img {
+			padding-bottom: 0;
+		}
+	}
+}

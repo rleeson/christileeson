@@ -54,6 +54,7 @@ function cl_register_kanopi_pack(): void {
 
 			$loader->register_runtime_script( 'runtime', [ 'jquery' ] );
 			$loader->register_style( 'block-editor-theme' );
+			$loader->register_script( 'block-editor' );
 
 			$loader->enqueue_assets();
 		}
@@ -87,7 +88,7 @@ add_action( 'after_setup_theme', function () {
 	 * Register theme menus
 	 */
 	register_nav_menus( [
-		'primary' => esc_html__( 'Main Services', 'christileeson' )
+		'primary' => esc_html__( 'Main Menu', 'christileeson' )
 	] );
 
 	/*

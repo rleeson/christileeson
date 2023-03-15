@@ -1,0 +1,36 @@
+@use '@/scss/common/functions';
+@use '@/scss/mixins/elements.scss';
+@use '@/scss/mixins/sizes.scss';
+
+.card {
+	&__section {
+		display: block;
+
+		& > .block-editor-inner-blocks > .block-editor-block-list__layout {
+			display: grid;
+			grid-gap: functions.pixelsToRem(60);
+    
+			@include sizes.fullsize() {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+	}
+
+	&__icon {
+		& > .block-editor-inner-blocks > .block-editor-block-list__layout {
+			display: flex;
+			flex-direction: column;
+			gap: functions.pixelsToRem(10);
+            
+			& > * {
+				@include elements.reset();
+			}
+		}
+
+		figure {
+			& > div > img {
+				padding-bottom: 0;
+			}
+		}
+	}
+}
