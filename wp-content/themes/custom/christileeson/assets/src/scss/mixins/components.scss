@@ -1,0 +1,55 @@
+@use '@/scss/common/functions';
+@use '@/scss/mixins/elements';
+
+@mixin button($backgroundColor, $textColor, $outlineColor: null) {
+	@if $outlineColor == null {
+		$outlineColor: currentColor;
+	}
+
+	border-radius: functions.pixelsToRem(8);
+	border-color: currentColor;
+	background-color: $textColor;
+	color: var(--button__generic-text);
+	font-size: functions.pixelsToRem(12);
+	filter: drop-shadow(functions.pixelsToRem(3) functions.pixelsToRem(3) functions.pixelsToRem(12) rgba(0, 0, 0, 0.1));
+
+	&:focus,
+	&:hover {
+		background-color: $textColor;
+		color: $backgroundColor;
+	}
+
+	&:focus,
+	&:focus-visible {
+		outline: solid functions.pixelsToRem(2) $outlineColor;
+		outline-offset: functions.pixelsToRem(2);
+	}
+}
+
+// Main menu icon using background image 
+// 
+// @param $width - Icon svg width
+// @param $height - Icon svg height
+// @param $backgroundImage - Icon svg src
+@mixin main-menu-icon($width, $height, $backgroundImage) {
+	@include elements.button-reset();
+	align-items: center;
+	justify-content: center;
+	padding: 0 1.25rem;
+	cursor:pointer;
+
+	&:after {
+		content: ' ';
+		display: block;
+		width: $width;
+		height: $height;
+		background-image: $backgroundImage;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: contain;
+	}
+
+	&:hover {
+		filter: var(--header__link-filter);
+	}
+}

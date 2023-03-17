@@ -36,8 +36,7 @@
 		}
 
 		&:focus, &:focus-visible {
-			outline: solid .2rem currentColor;
-			outline-offset: .2rem;
+			outline-offset: functions.pixelsToRem(3);
 		}
 	}
 

@@ -19,12 +19,13 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'christileeson' ); ?></a>
+	<a class="skip-link button__inverted screen-reader-text" href="#content"><?php 
+		esc_html_e( 'Skip to content', 'christileeson' ); ?></a>
 	<header class="header">
 		<div class="header__logo">
 			<a class="header__logo-link" href="<?php echo esc_url( home_url() ); ?>" rel="home">
-				<span class="screen-reader-text"><?php bloginfo( 'name' ); ?><?php 
-					echo esc_html__( 'Christi Leeson Home Page', 'christileeson' ); ?></span></a>
+				<span class="screen-reader-text"><?php bloginfo( 'name' ); ?> <?php 
+					echo esc_html__( 'Home Page', 'christileeson' ); ?></span></a>
 		</div>
 		<div class="header__controls">
 			<button class="search__open" aria-expanded="false" aria-controls="header__search">
@@ -53,11 +54,13 @@
 				<?php
 				wp_nav_menu(
 					[
-						'theme_location' => 'main-navigation',
+						'theme_location' => 'primary',
 						'menu_id'        => 'main-navigation',
 						'container'      => false,
 						'echo'           => true,
-						'depth'          => 1
+						'depth'          => 1,
+						'link_after'	 => '</span>',
+						'link_before'	 => '<span class="text">',
 					]
 				);
 				?>

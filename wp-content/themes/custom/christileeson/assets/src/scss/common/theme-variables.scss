@@ -1,3 +1,5 @@
+@use 'functions.scss';
+
 $root_path: '../' !default;
 $static_image_path: $root_path + 'static/images/';
 
@@ -23,21 +25,38 @@ $static_image_path: $root_path + 'static/images/';
 	--color__ocean-mdlt: #a2d8ddff; 
 	--color__ocean-lt: #d6edefff;
 
+	// Font Families
+	--font__body: Lato, Arial, sans-serif;
+	--font__heading: Petrona, Arial, sans-serif;
+
+	// Size
+	--size__content-width: functions.pixelsToRem(1440);
+	--size__font-body: 18px;
+
 	// Header
 	--header__background: var(--color__night);
 	--header__background-full: var(--color__snow);
 	--header__border: var(--color__pale-grey);
-	--header__logo: url('#{$static_image_path}christi-leeson-logo-mobile.png');
-	--header__logo-full: url('#{$static_image_path}christi-leeson-logo-full.png');
+	--header__logo: url('#{$static_image_path}logo-site-header.svg');
+	--header__logo-mobile-filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(8%) hue-rotate(220deg) brightness(116%) contrast(100%);
+	--header__link-filter: brightness(0) saturate(100%) invert(18%) sepia(63%) saturate(4337%) hue-rotate(173deg) brightness(93%) contrast(101%);
+	--header__link-filter-mobile: brightness(0) saturate(100%) invert(64%) sepia(7%) saturate(1481%) hue-rotate(137deg) brightness(93%) contrast(86%);;
 	--header__menu-toggle: var(--color__snow);
 	--header__menu-toggle-active: var(--color__ocean-md);
 	--header__text: var(--color__snow);
 	--header__text-full: var(--color__night);
 
+	// Header Controls
+	--header__icon-linkedin: url('#{$static_image_path}icon-linkedin.svg');
+	--header__icon-search: url('#{$static_image_path}icon-search.svg');
+	--header__icon-youtube: url('#{$static_image_path}icon-youtube.svg');
+
+	// Buttons
+	--button__generic-background: var(--color__tropical-sky-dark);
+	--button__generic-text: var(--color__snow);
+	--button__generic-active-background: var(--color__snow);
+	--button__generic-active-text: var(--color__tropical-sky-dark);
+
 	// Cards
 	--cards__heading-color: var(--color__ocean-dk);
-
-	// Font Families
-	--font__body: Lato, Arial, sans-serif;
-	--font__heading: Petrona, Arial, sans-serif;
 }

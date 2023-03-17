@@ -1,0 +1,20 @@
+@use '@/scss/common/functions';
+@use '@/scss/mixins/components';
+
+body.admin-bar {
+	.skip-link {
+		top: functions.pixelsToRem(38);
+	}
+
+	@media screen and (max-width: 782px) {
+		.skip-link {
+			top: functions.pixelsToRem(58);
+		}
+	}
+
+	#wpadminbar .screen-reader-shortcut {
+		@include components.button(var(--button__generic-text), var(--button__generic-background));
+		font-family: var(--font__body);
+		font-size: functions.pixelsToRem(12);
+	}
+}
