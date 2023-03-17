@@ -4,10 +4,9 @@
 @use '@/scss/mixins/sizes';
 
 .header {
+	@include sizes.container();
 	display: grid;
 	grid-template-columns: functions.pixelsToRem(120) 1fr;
-	max-width: functions.pixelsToRem(1440);
-	margin: 0 auto;
 	padding: functions.pixelsToRem(20);
 	background-color: var(--header__background);
 

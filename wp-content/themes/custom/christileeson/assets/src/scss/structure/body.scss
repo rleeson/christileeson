@@ -1,0 +1,5 @@
+@use '@/scss/mixins/sizes';
+
+.site-main {
+	@include sizes.container();
+}

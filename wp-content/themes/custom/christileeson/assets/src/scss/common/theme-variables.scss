@@ -30,7 +30,7 @@ $static_image_path: $root_path + 'static/images/';
 	--font__heading: Petrona, Arial, sans-serif;
 
 	// Size
-	--size__content-width: functions.pixelsToRem(1440);
+	--size__content-width: #{functions.pixelsToRem(1440)};
 	--size__font-body: 18px;
 
 	// Header
