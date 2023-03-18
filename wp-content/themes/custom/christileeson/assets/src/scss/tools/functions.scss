@@ -1,0 +1,35 @@
+@use 'sass:math';
+
+// Suggested to load this module via forward if the 
+// root size is not the default.
+// Otherwise, you must pass in the new root size everytime 
+// you call functions.
+$root_font_pixel_size: 16 !default;
+
+// Translate an Elements font size to 'em' units
+// Use for body text inside a containing section which sets
+// a local font size which may be different from the global/:root size
+//
+// @param $elementSize - Size in 'px' for the element
+// @param $baseSize - Size in 'px' for the container, defaults to $root_font_pixel_size (16px)
+// @return - Calculated size in 'em', 0 if $baseSize is 0
+@function pixelsToEm( $elementSize, $baseSize: $root_font_pixel_size ) {
+	@if 0 != $baseSize {
+		@return math.div( $elementSize, $baseSize ) * 1em;
+	}
+
+	@return 0;
+}
+
+// Translate an Elements font size to 'rem' units
+// Use for body of template text elements which scale of the global/:root size
+//
+// @param $elementSize - Size in 'px' of the elements text, from design
+// @return - Calculated size in 'rem', 0 if $root_font_pixel_size is 0
+@function pixelsToRem( $elementSize ) {
+	@if 0 != $root_font_pixel_size {
+		@return math.div( $elementSize, $root_font_pixel_size ) * 1rem;
+	}
+
+	@return 0;
+}

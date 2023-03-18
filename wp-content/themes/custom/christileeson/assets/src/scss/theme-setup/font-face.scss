@@ -1,5 +1,5 @@
-$root_path: '../' !default;
-$static_font_path: $root_path + 'static/fonts/';
+$root_font_path: '../' !default;
+$static_font_path: $root_font_path + 'static/fonts/';
 
 /* lato-regular - latin */
 @font-face {

@@ -5,7 +5,7 @@ import React from 'react';
 export const name = 'cl/icon-card';
 
 const blockTemplate: TemplateArray = [
-  ['core/image', {}],
+  ['core/image', { align:'center' }],
   ['core/heading', { level: 3, placeholder: 'Title' }],
   ['core/paragraph', { placeholder: 'Details' }],
 ];

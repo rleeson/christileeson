@@ -1,10 +1,9 @@
-@use '@/scss/common/functions.scss';
-@use '@/scss/mixins/components.scss';
+@use '@/scss/theme-configuration' as *;
 
 .button {
-	@include components.button(var(--button__generic-background), var(--button__generic-text));
+	@include components-button(var(--button__generic-background), var(--button__generic-text));
 
 	&__inverted {
-		@include components.button(var(--button__generic-text), var(--button__generic-background));
+		@include components-button(var(--button__generic-text), var(--button__generic-background));
 	}
 }

@@ -1,0 +1,68 @@
+@use 'elements';
+
+// Generic button which inverts its colors on hover/focus
+//  - Allows configuration of the focus outline and offset
+// 		- Default of current text color at .1rem with no offset
+//  - Allows configuration of an optional border radius
+// 
+// @param $width - Icon svg width
+// @param $height - Icon svg height
+// @param $backgroundImage - Icon svg src
+@mixin button(
+	$backgroundColor, 
+	$textColor, 
+	$border-radius: null,
+	$outline: null, 
+	$outlineOffset: null
+) {
+	@if $outline == null {
+		$outline: solid 0.1rem currentColor;
+	}
+
+	@if $outlineOffset == null {
+		$outlineOffset: 0.1rem;
+	}
+
+	@if null != $border-radius {
+		border-radius: $border-radius;
+	}
+
+	border-color: currentColor;
+	background-color: $backgroundColor;
+	color: $textColor;
+
+	&:focus,
+	&:hover {
+		background-color: $textColor;
+		color: $backgroundColor;
+	}
+
+	&:focus,
+	&:focus-visible {
+		outline: $outline;
+		outline-offset: $outlineOffset;
+	}
+}
+
+// Icon element using a centered SVG icon of a given size
+// 
+// @param $width - Icon SVG width
+// @param $height - Icon SVG height
+// @param $backgroundImage - Icon SVG url()
+@mixin center-svg-icon($width, $height, $backgroundImage) {
+	@include elements.reset();
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+
+	&:after {
+		content: ' ';
+		display: block;
+		width: $width;
+		height: $height;
+		background-image: $backgroundImage;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: contain;
+	}
+}

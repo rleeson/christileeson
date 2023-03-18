@@ -1,7 +1,11 @@
-@use 'functions.scss';
-
 $root_path: '../' !default;
 $static_image_path: $root_path + 'static/images/';
+
+@use '@/scss/theme-configuration';
+
+@function pixelsToRem($pixelSize) {
+	@return theme-configuration.tools-functions-pixelsToRem($pixelSize);
+}
 
 :root {
 	// Color export
@@ -30,13 +34,18 @@ $static_image_path: $root_path + 'static/images/';
 	--font__heading: Petrona, Arial, sans-serif;
 
 	// Size
-	--size__content-width: #{functions.pixelsToRem(1440)};
-	--size__font-body: 18px;
+	--size__content-width: #{pixelsToRem(1440)};
+	--size__font-body: #{theme-configuration.rootFontPixelSize() * 1px};
+	--size__gap-mobile: #{pixelsToRem(30)};
+	--size__gap-full:#{pixelsToRem(60)};
+
+	// Separator | hr
+	--separator__color: var(--color__pale-grey);
 
 	// Header
 	--header__background: var(--color__night);
 	--header__background-full: var(--color__snow);
-	--header__border: var(--color__pale-grey);
+	--header__border: var(--separator__color);
 	--header__logo: url('#{$static_image_path}logo-site-header.svg');
 	--header__logo-mobile-filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(8%) hue-rotate(220deg) brightness(116%) contrast(100%);
 	--header__link-filter: brightness(0) saturate(100%) invert(18%) sepia(63%) saturate(4337%) hue-rotate(173deg) brightness(93%) contrast(101%);

@@ -1,5 +1,4 @@
-@use '@/scss/common/functions.scss';
-@use '@/scss/mixins/sizes.scss';
+@use '@/scss/theme-configuration' as *;
 
 #mobile__navigation {
 	display: flex;
@@ -10,11 +9,11 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: functions.pixelsToRem(45);
-		height: functions.pixelsToRem(32);
-		border-top: solid .1rem currentColor;
+		width: pixelsToRem(45);
+		height: pixelsToRem(32);
+		border-top: solid pixelsToRem(2) currentColor;
 		border-right: none 0;
-		border-bottom: solid .1rem currentColor;
+		border-bottom: solid pixelsToRem(2) currentColor;
 		border-left: none 0;
 		background-color: transparent;
 		color: var(--header__menu-toggle);
@@ -23,7 +22,7 @@
 			content: ' ';
 			display: block;
 			width: 70%;
-			height: functions.pixelsToRem(1);
+			height: pixelsToRem(1);
 			background: var(--header__menu-toggle);
 		}
 
@@ -36,11 +35,11 @@
 		}
 
 		&:focus, &:focus-visible {
-			outline-offset: functions.pixelsToRem(3);
+			outline-offset: pixelsToRem(3);
 		}
 	}
 
-	@include sizes.fullsize() {
+	@include sizes-fullsize() {
 		display: none;
 	}
 }

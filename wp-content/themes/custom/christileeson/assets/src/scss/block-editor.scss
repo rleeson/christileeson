@@ -14,13 +14,15 @@ Tags: kanopi-pack, webpack, gutenberg, scss
 $asset_root: '../' !default;
 
 @use 'sass:meta';
-@use 'common/theme-variables' with ($root_path: $asset_root);
-@use 'common/font-face' with ($root_path: $asset_root);
-@use 'common/functions';
+
+// All Site-wide :root variables and Web font declarations
+@use 'theme-setup' with ($root_path: $asset_root);
+@use 'theme-configuration' as *;
 
 .editor-styles-wrapper > * {
-	margin-right: functions.pixelsToRem(20);
-	margin-left: functions.pixelsToRem(20);
+	margin-right: pixelsToRem(20);
+	margin-left: pixelsToRem(20);
+	font-size: 18px;
 }
 
 .block-editor-block-list__layout {

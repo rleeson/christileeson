@@ -16,11 +16,9 @@ $asset_root: '../' !default;
 // Modern Normalize.css variant
 @use 'normalize';
 
-// All :root variable for site-wide style use
-@use 'common/theme-variables' with ($root_path: $asset_root);
+// All Site-wide :root variables and Web font declarations
+@use 'theme-setup' with ($root_path: $asset_root);
 
-// Web font declarations
-@use 'common/font-face' with ($root_path: $asset_root);
 
 @use 'structure';
 @use 'cms/admin-bar';

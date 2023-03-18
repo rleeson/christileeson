@@ -1,0 +1,32 @@
+$root_font_pixel_size: 18;
+
+// Use the generic Tools with the root font size
+@use '@/scss/tools' with ($root_font_pixel_size: $root_font_pixel_size);
+
+// Forward the configured Tools
+@forward '@/scss/tools' as tools-*;
+
+@forward 'mixins/components' as components-*;
+@forward 'mixins/sizes' as sizes-*;
+
+// Access the configured Base/:root font pixel size
+// @return -- Pixel size with no units (no px)
+@function rootFontPixelSize() {
+	@return $root_font_pixel_size;
+}
+
+// Shorthand function to translate px to em 
+// @return -- Size in em relative to the base size, defaults to the root pixel size
+@function pixelsToEm($pixels, $baseSize: rootFontPixelSize()) {
+	@return tools.functions-pixelsToEm($pixels, $baseSize);
+}
+
+// Shorthand function to translate px to rem 
+// @return -- Size in rem
+@function pixelsToRem($pixels) {
+	@return tools.functions-pixelsToRem($pixels);
+}
+
+@mixin visually-hidden() {
+	@include tools.mixins-elements-visually-hidden();
+}

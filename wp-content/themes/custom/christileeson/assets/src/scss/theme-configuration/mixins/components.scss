@@ -1,0 +1,28 @@
+@use '@/scss/tools';
+
+@mixin button($backgroundColor, $textColor) {
+	@include tools.mixins-components-button($backgroundColor, $textColor);
+
+	border-radius: tools.functions-pixelsToRem(8);
+	font-size: tools.functions-pixelsToRem(12);
+	filter: drop-shadow(
+		tools.functions-pixelsToRem(3) 
+		tools.functions-pixelsToRem(3) 
+		tools.functions-pixelsToRem(12) 
+		rgba(0, 0, 0, 0.1)
+	);
+}
+
+// Main menu icon using centered, sized SVG image 
+// 
+// @param $width - Icon SVG width
+// @param $height - Icon SVG height
+// @param $backgroundImage - Icon SVG src
+@mixin main-menu-icon($width, $height, $backgroundImage) {
+	@include tools.mixins-components-center-svg-icon($width, $height, $backgroundImage);
+	padding: 0 1.25rem;
+
+	&:hover {
+		filter: var(--header__link-filter);
+	}
+}

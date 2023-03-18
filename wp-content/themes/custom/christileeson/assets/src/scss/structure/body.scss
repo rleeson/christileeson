@@ -1,5 +1,18 @@
-@use '@/scss/mixins/sizes';
+@use '@/scss/theme-configuration' as *;
 
 .site-main {
-	@include sizes.container();
+	@include sizes-site-container();
+	font-size: 1rem;
+
+	& > * {
+		margin: 0;
+	}
+
+	& > * + * {
+		margin-top: var(--size__gap-mobile);
+
+		@include sizes-fullsize() {
+			margin-top: var(--size__gap-full);
+		}
+	}
 }

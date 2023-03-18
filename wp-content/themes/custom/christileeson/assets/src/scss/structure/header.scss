@@ -1,18 +1,16 @@
-@use '@/scss/common/functions';
-@use '@/scss/mixins/components';
-@use '@/scss/mixins/elements';
-@use '@/scss/mixins/sizes';
+@use '@/scss/theme-configuration' as *;
 
 .header {
-	@include sizes.container();
+	@include sizes-site-container();
 	display: grid;
-	grid-template-columns: functions.pixelsToRem(120) 1fr;
-	padding: functions.pixelsToRem(20);
+	grid-template-columns: pixelsToRem(120) 1fr;
+	padding: pixelsToRem(20);
 	background-color: var(--header__background);
+	font-size: 1rem;
 
-	@include sizes.fullsize() {
-		grid-template-columns: functions.pixelsToRem(223) 1fr;
-		padding: functions.pixelsToRem(30);
+	@include sizes-fullsize() {
+		grid-template-columns: pixelsToRem(223) 1fr;
+		padding: pixelsToRem(30);
 		border-bottom: solid .1rem var(--header__border);
 		background-color: var(--header__background-full);
 	}
@@ -20,14 +18,14 @@
 	a,
 	button {
 		&:focus {
-			outline: solid functions.pixelsToRem(2) currentColor;
+			outline: solid pixelsToRem(2) currentColor;
 		}
 	}
 
 	&__logo {
 		&-link {
 			display: block;
-			height: functions.pixelsToRem(56);
+			height: pixelsToRem(56);
 			background-image: var(--header__logo);
 			filter: var(--header__logo-mobile-filter);
 			background-repeat: no-repeat;
@@ -36,17 +34,17 @@
 			&:focus, 
 			&:hover {
 				filter: var(--header__link-filter-mobile);
-				outline-offset: functions.pixelsToRem(3);
+				outline-offset: pixelsToRem(3);
 			}
 		}
 
-		@include sizes.fullsize() {
+		@include sizes-fullsize() {
 			display: flex;
 			justify-content: center;
             
 			&-link {
-				width: functions.pixelsToRem(175);
-				height: functions.pixelsToRem(76);
+				width: pixelsToRem(175);
+				height: pixelsToRem(76);
 				filter: brightness(0.1);
 
 				&:focus, 
@@ -65,12 +63,12 @@
 
 	&__main-navigation {
 		.menu {
-			@include elements.list-reset();
+			@include tools-mixins-elements-list-reset();
 			display: flex;
 			flex-direction: row;
 			height: 100%; 
 			font-family: var(--font__body);
-			font-size: functions.pixelsToRem(20);
+			font-size: pixelsToEm(20);
 			font-weight: 600;
 			line-height: 1.2;
 		}
@@ -84,22 +82,22 @@
 			a {
 				&:hover {
 					text-decoration: underline;
-					text-underline-offset: functions.pixelsToRem(3);
+					text-underline-offset: pixelsToRem(3);
 				}
 			}
 
 			&.linkedin,
 			&.youtube {
 				.text {
-					@include elements.visually-hidden();
+					@include visually-hidden();
 				}
 			}
 
 			&.linkedin {
 				a {
-					@include components.main-menu-icon(
-						functions.pixelsToRem(20),
-						functions.pixelsToRem(20),
+					@include components-main-menu-icon(
+						pixelsToRem(20),
+						pixelsToRem(20),
 						var(--header__icon-linkedin)
 					);
 				}			
@@ -107,9 +105,9 @@
 
 			&.youtube {
 				a {
-					@include components.main-menu-icon(
-						functions.pixelsToRem(24),
-						functions.pixelsToRem(18),
+					@include components-main-menu-icon(
+						pixelsToRem(24),
+						pixelsToRem(18),
 						var(--header__icon-youtube)
 					);
 				}			
@@ -126,9 +124,9 @@
 	}
 
 	.search__open {
-		@include components.main-menu-icon(
-			functions.pixelsToRem(25),
-			functions.pixelsToRem(25),
+		@include components-main-menu-icon(
+			pixelsToRem(25),
+			pixelsToRem(25),
 			var(--header__icon-search)
 		);
 		display: none;
@@ -143,7 +141,7 @@
 		display: none;
 	}
 
-	@include sizes.fullsize() {
+	@include sizes-fullsize() {
 		.search__open {
 			display: flex;
 		}

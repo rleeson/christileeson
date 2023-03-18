@@ -1,0 +1,21 @@
+@use '@/scss/theme-configuration' as *;
+
+.wp-block-quote {
+	padding-top: var(--size__gap-full);
+	padding-bottom: var(--size__gap-full);
+	font-size: pixelsToRem(42);
+	font-style: italic;
+
+	p {
+		@include tools-mixins-elements-reset();
+	}
+
+	@include sizes-fullsize() {
+		padding: var(--size__gap-full);
+	}
+}
+
+.wp-block-separator {
+	margin: 0;
+	color: var(--separator__color);
+}

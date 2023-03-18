@@ -1,20 +1,19 @@
-@use '@/scss/common/functions';
-@use '@/scss/mixins/components';
+@use '@/scss/theme-configuration' as *;
 
 body.admin-bar {
 	.skip-link {
-		top: functions.pixelsToRem(38);
+		top: pixelsToRem(38);
 	}
 
 	@media screen and (max-width: 782px) {
 		.skip-link {
-			top: functions.pixelsToRem(58);
+			top: pixelsToRem(58);
 		}
 	}
 
 	#wpadminbar .screen-reader-shortcut {
-		@include components.button(var(--button__generic-text), var(--button__generic-background));
+		@include components-button(var(--button__generic-text), var(--button__generic-background));
 		font-family: var(--font__body);
-		font-size: functions.pixelsToRem(12);
+		font-size: pixelsToRem(12);
 	}
 }

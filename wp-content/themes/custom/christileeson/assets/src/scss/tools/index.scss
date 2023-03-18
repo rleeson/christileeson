@@ -1,0 +1,7 @@
+$root_font_pixel_size: 16 !default;
+
+// Common functions with theme size dependencies injected
+@forward 'functions' as functions-* with ($root_font_pixel_size: $root_font_pixel_size);
+
+// Namespaced mixins follow mixin-{type}- prefix naming
+@forward 'mixins' as mixins-*;

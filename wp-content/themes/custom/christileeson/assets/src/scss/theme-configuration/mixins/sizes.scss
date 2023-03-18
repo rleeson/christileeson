@@ -1,0 +1,13 @@
+@use '@/scss/tools';
+
+// Confines inner content to a maximum width of 1440px, centered
+@mixin site-container() {
+	@include tools.mixins-sizes-container(tools.functions-pixelsToRem(1440));
+}
+
+// Media-query/Breakpoint wrapper for Full/Desktop size, accepts inner @content
+@mixin fullsize() {
+	@include tools.mixins-sizes-breakpoint-above(1024px) {
+		@content;
+	}
+}

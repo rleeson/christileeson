@@ -1,14 +1,12 @@
-@use '@/scss/common/functions.scss';
-@use '@/scss/mixins/elements.scss';
-@use '@/scss/mixins/sizes.scss';
+@use '@/scss/theme-configuration' as *;
 
 .card {
 	&__section {
 		display: grid;
-		grid-gap: functions.pixelsToRem(60);
-		padding: functions.pixelsToRem(60);
+		grid-gap: var(--size__gap-full);
+		padding: var(--size__gap-full);
 
-		@include sizes.fullsize() {
+		@include sizes-fullsize() {
 			grid-template-columns: 1fr 1fr;
 		}
 	}
@@ -16,11 +14,11 @@
 	&__icon {
 		display: flex;
 		flex-direction: column;
-		gap: functions.pixelsToRem(10);
-		padding: functions.pixelsToRem(30);
+		gap: pixelsToRem(10);
+		padding: pixelsToRem(30);
 
 		& > * {
-			@include elements.reset();
+			@include tools-mixins-elements-reset();
 		}
 		h3 {
 			color: var(--cards__heading-color);
@@ -31,7 +29,7 @@
 			line-height: 1.5;
 		}
 		figure, img {
-			padding-bottom: functions.pixelsToRem(30);
+			padding-bottom: pixelsToRem(30);
 		}
 		figure > img {
 			padding-bottom: 0;

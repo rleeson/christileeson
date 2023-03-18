@@ -1,6 +1,4 @@
-@use '@/scss/common/functions';
-@use '@/scss/mixins/elements.scss';
-@use '@/scss/mixins/sizes.scss';
+@use '@/scss/theme-configuration' as *;
 
 .card {
 	&__section {
@@ -8,9 +6,9 @@
 
 		& > .block-editor-inner-blocks > .block-editor-block-list__layout {
 			display: grid;
-			grid-gap: functions.pixelsToRem(60);
+			grid-gap: pixelsToRem(60);
     
-			@include sizes.fullsize() {
+			@include sizes-fullsize() {
 				grid-template-columns: 1fr 1fr;
 			}
 		}
@@ -20,10 +18,10 @@
 		& > .block-editor-inner-blocks > .block-editor-block-list__layout {
 			display: flex;
 			flex-direction: column;
-			gap: functions.pixelsToRem(10);
+			gap: pixelsToRem(10);
             
 			& > * {
-				@include elements.reset();
+				@include tools-mixins-elements-reset();
 			}
 		}
 
