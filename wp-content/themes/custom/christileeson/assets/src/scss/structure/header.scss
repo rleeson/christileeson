@@ -124,6 +124,7 @@
 	}
 
 	.search__open {
+		@include tools-mixins-elements-button-reset();
 		@include components-main-menu-icon(
 			pixelsToRem(25),
 			pixelsToRem(25),

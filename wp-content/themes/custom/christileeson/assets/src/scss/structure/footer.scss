@@ -1,0 +1,9 @@
+@use '@/scss/theme-configuration' as *;
+
+.footer {
+	@include sizes-site-container();
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	padding: var(--size__gap-full);
+}

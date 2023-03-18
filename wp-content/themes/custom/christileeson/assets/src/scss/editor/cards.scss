@@ -20,7 +20,7 @@
 			flex-direction: column;
 			gap: pixelsToRem(10);
             
-			& > * {
+			& > *:not(figure) {
 				@include tools-mixins-elements-reset();
 			}
 		}

@@ -1,6 +1,7 @@
 @use '@/scss/theme-configuration' as *;
 
 .wp-block-quote {
+	margin-top: 0;
 	padding-top: var(--size__gap-full);
 	padding-bottom: var(--size__gap-full);
 	font-size: pixelsToRem(42);
