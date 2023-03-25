@@ -19,13 +19,18 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-	<a class="skip-link button__inverted screen-reader-text" href="#content"><?php 
-		esc_html_e( 'Skip to content', 'christileeson' ); ?></a>
+	<a class="skip-link button__inverted screen-reader-text" href="#content">
+	<?php 
+		esc_html_e( 'Skip to content', 'christileeson' ); 
+	?>
+		</a>
 	<header class="header">
 		<div class="header__logo">
 			<a class="header__logo-link" href="<?php echo esc_url( home_url() ); ?>" rel="home">
 				<span class="screen-reader-text"><?php bloginfo( 'name' ); ?> <?php 
-					echo esc_html__( 'Home Page', 'christileeson' ); ?></span></a>
+					echo esc_html__( 'Home Page', 'christileeson' ); 
+				?>
+					</span></a>
 		</div>
 		<div class="header__controls">
 			<button class="search__open" aria-expanded="false" aria-controls="header__search">
@@ -34,15 +39,18 @@
 				class="header__search"
 				aria-label="<?php echo esc_attr__( 'Search', 'christileeson' ); ?>"
 				aria-hidden="true"
-			><?php
-				get_search_form( [
-					'container_classes' => [ 'search__form' ],
-					'input_label_id'    => 'utility-menu-search',
-					'max_length'        => '200',
-					'placeholder_text'  => __( 'Search', 'christileeson' ),
-					'label_text'        => __( 'Search in ', 'christileeson' ) . home_url( '/' ),
-					'label_is_sr'       => true,
-				] );
+			>
+			<?php
+				get_search_form(
+					[
+						'container_classes' => [ 'search__form' ],
+						'input_label_id'    => 'utility-menu-search',
+						'max_length'        => '200',
+						'placeholder_text'  => __( 'Search', 'christileeson' ),
+						'label_text'        => __( 'Search in ', 'christileeson' ) . home_url( '/' ),
+						'label_is_sr'       => true,
+					] 
+				);
 				?>
 				<button class="search__close">
 					<span class="screen-reader-text"><?php echo esc_html__( 'Close Search', 'christileeson' ); ?></span></button>
@@ -59,8 +67,8 @@
 						'container'      => false,
 						'echo'           => true,
 						'depth'          => 1,
-						'link_after'	 => '</span>',
-						'link_before'	 => '<span class="text">',
+						'link_after'     => '</span>',
+						'link_before'    => '<span class="text">',
 					]
 				);
 				?>
@@ -76,14 +84,15 @@
 					<nav
 						class="=mobile__main-navigation"
 						aria-label="<?php echo esc_attr__( 'Mobile main navigation', 'christileeson' ); ?>"
-					><?php
+					>
+					<?php
 						wp_nav_menu(
 							[
 								'theme_location' => 'main-navigation',
 								'menu_id'        => 'main-navigation',
 								'container'      => false,
 								'echo'           => true,
-								'depth'          => 1
+								'depth'          => 1,
 							]
 						);
 						?>

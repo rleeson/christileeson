@@ -38,6 +38,7 @@ $static_image_path: $root_path + 'static/images/';
 	--size__font-body: #{theme-configuration.rootFontPixelSize() * 1px};
 	--size__gap-mobile: #{pixelsToRem(30)};
 	--size__gap-full:#{pixelsToRem(60)};
+	--size__gap-clamp: clamp(20px, calc((100vw - 1024px)*30px), 30px);
 
 	// Separator | hr
 	--separator__color: var(--color__pale-grey);
@@ -68,4 +69,8 @@ $static_image_path: $root_path + 'static/images/';
 
 	// Cards
 	--cards__heading-color: var(--color__ocean-dk);
+
+	// Headings 
+	--heading__color: var(--color__ocean-dk);
+	--heading__color-subtitle: var(--color__night);
 }

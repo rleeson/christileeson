@@ -13,6 +13,6 @@ COMPOSER_PATH=${DOCROOT}/wp-content/;
 
 cd $PROJECT_ROOT/$COMPOSER_PATH
 
-echo "Running Composer in $PROJECT_ROOT/$THEME_PATH"
+echo "Running Composer in $(pwd)"
 echo
 fin composer ${COMMAND}

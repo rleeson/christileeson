@@ -2,24 +2,72 @@
 <ruleset name="christileeson">
     <description>PHPCS Scan of Custom Plugin and Theme Code with Automattic's VIP Go ruleset</description>
 
+	<arg value="ps"/>
     <arg name="extensions" value="php"/>
     <arg name="basepath" value="./"/><!-- Strip the file paths down to the relevant bit -->
     <arg name="parallel" value="8"/><!-- Enables parallel processing when available for faster results. -->
 
-	<!-- Uploads folder is excluded -->
-	<exclude-pattern>*/uploads/*</exclude-pattern>
+	<!--
+	Prevent errors caused by WordPress Coding Standards not supporting PHP 8.0+.
+	See https://github.com/WordPress/WordPress-Coding-Standards/issues/2035
+	-->
+	<ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />
 
-	<!-- Composer vendor/ directory is excluded -->
-	<exclude-pattern>*/mu-plugins/vendor/*</exclude-pattern>
+	<!-- General Vendor/External Modules to skip scanning -->
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/plugins/*</exclude-pattern>
+	<exclude-pattern>*/uploads/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
 
 	<!-- All root mu-plugins inclusions are scanned -->
 	<include-pattern>*/mu-plugins/*.php</include-pattern>
 
 	<!-- Only Custom files, except code under node_modules (vendor code) -->
 	<exclude-pattern type="relative">^themes/(?!custom).+</exclude-pattern>
-	<include-pattern>*/themes/custom/christileeson/*</include-pattern>
+	<include-pattern>*/themes/custom/christileeson/**/*</include-pattern>
 	<exclude-pattern>*/themes/custom/christileeson/node_modules/*</exclude-pattern>
 
-    <!-- WordPress VIP Go Standards: Extends WordPress Code Style -->
+	<!-- Include sniffs for PHP cross-version compatibility. -->
+	<config name="testVersion" value="8.0"/>
+	<rule ref="PHPCompatibility"/>
+
+	<!-- WordPress VIP Go Standards: Extends WordPress Code Style -->
     <rule ref="WordPress-VIP-Go"></rule>
+
+	<!-- Convert all long arrays to short array syntax -->
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax"></rule>
+
+	<!-- Include WordPress Core Rulesets with the following Exceptions -->
+	<rule ref="WordPress">
+		<exclude name="WordPress-Docs"/>
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+		<exclude name="Generic.Commenting.DocComment"/>
+		<exclude name="Squiz.Commenting.FileComment"/>
+		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
+		<exclude name="WordPress.NamingConventions.ValidVariableName"/>
+	</rule>
+
+	<!-- Ignore WordPress Function Naming for PSR-4 code -->
+	<rule ref="WordPress.NamingConventions.ValidFunctionName">
+		<exclude-pattern>*/themes/custom/christileeson/src/**/*</exclude-pattern>
+	</rule>
+	
+	<!-- Ignore WordPress File Naming for PSR-4 Namespaces and a few Post Type templates -->
+	<rule ref="WordPress.Files">
+		<exclude-pattern>*/themes/custom/christileeson/src/**/*</exclude-pattern>
+	</rule>
+	
+	<!-- Ignore white-space in Comments and Inline HTML -->
+	<rule ref="WordPress.WhiteSpace.PrecisionAlignment">
+		<properties>
+			<property name="ignoreAlignmentTokens" type="array" value="T_COMMENT,T_INLINE_HTML,T_DOC_COMMENT_WHITESPACE"/>
+		</properties>
+	</rule>
+
+	<!-- Verify compatability of WP Functions for a given version or higher -->
+	<rule ref="WordPress.WP.DeprecatedFunctions">
+		<properties>
+			<property name="minimum_supported_version" value="6.1" />
+		</properties>
+	</rule>
 </ruleset>

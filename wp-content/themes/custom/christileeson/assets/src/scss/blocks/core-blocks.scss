@@ -2,8 +2,7 @@
 
 .wp-block-quote {
 	margin-top: 0;
-	padding-top: var(--size__gap-full);
-	padding-bottom: var(--size__gap-full);
+	padding: clamp(20px, calc(30 * (100vw - 1024px)) ,30px);
 	font-size: pixelsToRem(42);
 	font-style: italic;
 
@@ -11,9 +10,6 @@
 		@include tools-mixins-elements-reset();
 	}
 
-	@include sizes-fullsize() {
-		padding: var(--size__gap-full);
-	}
 }
 
 .wp-block-separator {

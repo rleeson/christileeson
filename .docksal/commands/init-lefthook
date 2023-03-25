@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+
+## Install Lefthook and initialize project hooks
+##
+## Usage: fin init-lefthook [version] [OS] [architecture]
+## Flags:
+##      version         - Lefthook release to install, default to 1.3.6 [optional]
+##      OS              - Target Operating System, default to MacOS [optional]
+##      architecture    - Processor architecture, defaults to run "uname -m" [optional]
+
+# Abort if anything fails
+set -e
+
+# Console colors
+green='\033[0;32m'
+green_bg='\033[42m'
+red='\033[0;31m'
+red_bg='\033[0;41m'
+yellow='\033[1;33m'
+yellow_bg='\033[1;43m'
+NC='\033[0m'
+
+accepted_architectures=(
+    "x86_64"
+    "arm64"
+)
+
+accepted_OS=(
+    "Freebsd"
+    "Linux"
+    "MacOS"
+)
+
+cli_OS="$2"
+cli_architecture="$3"
+
+default_architecture="$(uname -m)"
+default_OS="MacOS"
+default_version="1.3.8"
+
+version="$1"
+OS=""
+architecture=""
+
+## Check for a version, no validation, sets a default if not provided
+if [[ "${version}" == "" ]]; then
+    version="${default_version}"
+fi
+
+## Validates the requested OS, Windows is not supported
+if [[ "${cli_OS}" != "" ]]; then
+    for accepted in "${accepted_OS[@]}"; do
+        if [ "${cli_OS}" == "${accepted}" ]; then
+            OS="${accepted}"
+        fi
+    done
+
+    if [[ "${OS}" == "" ]]; then
+        echo -e "${yellow_bg} Warning ${NC} Unsupported OS ${cli_OS}, using ${default_OS}"
+    fi
+fi
+
+## Sets default OS if not provided
+if [[ "${OS}" == "" ]]; then
+    OS="${default_OS}"
+fi
+
+## Validates the requested architecture
+if [[ "${cli_architecture}" != "" ]]; then
+    for accepted in "${accepted_architectures[@]}"; do
+        if [ "${cli_architecture}" == "${accepted}" ]; then
+            architecture="${accepted}"
+        fi
+    done
+
+    if [[ "${architecture}" == "" ]]; then
+        echo -e "${yellow_bg} Warning ${NC} Unsupported architecture ${cli_architecture}, using ${default_architecture}"
+    fi
+fi
+
+## Sets default architecture if not provided
+if [[ "${architecture}" == "" ]]; then
+    architecture="${default_architecture}"
+fi
+
+## Installation check
+installed_efthook=$(which lefthook || true)
+lefthook_version=$(lefthook version 2> /dev/null || true)
+echo "Current Lefthook: ${installed_efthook}"
+echo "Version: ${lefthook_version}"
+if [[ "${installed_efthook}" == "" || "${lefthook_version}" != "${version}" ]]; then
+    lefthook_url="https://github.com/evilmartians/lefthook/releases/download/v${version}/lefthook_${version}_${OS}_${architecture}"
+    echo -e "${green_bg} Setup ${NC}${green} Installing Lefthook from ${yellow}${lefthook_url}${NC}..."
+    sudo curl -fsSL -o /usr/local/bin/lefthook "${lefthook_url}"
+    sudo chmod +x /usr/local/bin/lefthook
+fi
+
+validate_lefthook=$(which lefthook || true)
+if [[ "${validate_lefthook}" == "" ]]; then
+    echo -e "${red_bg} ERROR ${NC} Lefthook is not installed, please stop and install it, then rerun ${yellow}fin init-lefthook${NC}"
+else
+    echo -e "Install Lefthook hooks from ${yellow}lefthook.yml${NC}"
+    lefthook install
+fi

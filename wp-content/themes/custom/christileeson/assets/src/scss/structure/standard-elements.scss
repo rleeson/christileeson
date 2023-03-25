@@ -1,15 +1,5 @@
 @use '@/scss/theme-configuration' as *;
 
-html,
-body {
-	font-family: var(--font__body);
-	font-size: var(--size__font-body);
-}
-
-h1, h2, h3, h4, h5, h6 {
-	font-family: var(--font__heading);
-}
-
 .aligncenter {
 	align-self: center;
 }

@@ -59,12 +59,14 @@
 	}
   },
   "require-dev": {
-    "automattic/vipwpcs": "dev-develop"
+    "automattic/vipwpcs": "dev-develop",
+    "phpcompatibility/php-compatibility": "10.x-dev"
   },
   "scripts": {
-	"compile-theme-translations": "./mu-plugins/vendor/bin/wp i18n make-mo themes/custom/christileeson/languages",
-	"phpcs": "./mu-plugins/vendor/bin/phpcs --standard=\"../.phpcs.xml.dist\" ./",
-	"make-theme-translations": "./mu-plugins/vendor/bin/wp i18n make-pot themes/custom/christileeson themes/custom/christileeson/languages/christileeson.pot",
-	"update-theme-translations": "./mu-plugins/vendor/bin/wp i18n update-po themes/custom/christileeson/languages/christileeson.pot themes/custom/christileeson/languages"
+    "compile-theme-translations": "./mu-plugins/vendor/bin/wp i18n make-mo themes/custom/christileeson/languages",
+    "phpcbf": "./mu-plugins/vendor/bin/phpcbf --standard=\"../.phpcs.xml.dist\" ./",
+    "phpcs": "./mu-plugins/vendor/bin/phpcs --standard=\"../.phpcs.xml.dist\" ./",
+    "make-theme-translations": "./mu-plugins/vendor/bin/wp i18n make-pot themes/custom/christileeson themes/custom/christileeson/languages/christileeson.pot",
+    "update-theme-translations": "./mu-plugins/vendor/bin/wp i18n update-po themes/custom/christileeson/languages/christileeson.pot themes/custom/christileeson/languages"
   }
 }

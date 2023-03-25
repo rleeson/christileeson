@@ -13,14 +13,19 @@ Tags: kanopi-pack, webpack, gutenberg, scss
 
 $asset_root: '../' !default;
 
+@use 'sass:meta';
+
 // Modern Normalize.css variant
 @use 'normalize';
 
 // All Site-wide :root variables and Web font declarations
 @use 'theme-setup' with ($root_path: $asset_root);
 
-
 @use 'structure';
 @use 'cms/admin-bar';
 @use 'blocks';
 @use 'components/buttons';
+
+.site-main {
+	@include meta.load-css('content');
+}

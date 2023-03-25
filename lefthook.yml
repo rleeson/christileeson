@@ -1,0 +1,7 @@
+pre-commit:
+  parallel: true
+  commands:
+    code-beatify:
+      run: fin site-composer -n phpcbf
+    code-sniff:
+      run: fin site-composer -n phpcs
