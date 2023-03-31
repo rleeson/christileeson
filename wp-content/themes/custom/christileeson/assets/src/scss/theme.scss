@@ -23,7 +23,7 @@ $asset_root: '../' !default;
 
 @use 'structure';
 @use 'cms/admin-bar';
-@use 'blocks';
+//@use 'blocks';
 @use 'components/buttons';
 
 .site-main {

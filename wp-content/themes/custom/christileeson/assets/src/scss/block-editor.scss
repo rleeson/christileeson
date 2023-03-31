@@ -28,7 +28,7 @@ $asset_root: '../' !default;
 .block-editor-block-list__layout {
 	@include meta.load-css('normalize');
 	@include meta.load-css('structure');
-	@include meta.load-css('blocks');
+	//@include meta.load-css('blocks');
 
 	// Load overrides to block styles for the editor
 	@include meta.load-css('editor');

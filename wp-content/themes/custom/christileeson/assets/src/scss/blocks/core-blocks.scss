@@ -1,17 +1,5 @@
 @use '@/scss/theme-configuration' as *;
 
-.wp-block-quote {
-	margin-top: 0;
-	padding: clamp(20px, calc(30 * (100vw - 1024px)) ,30px);
-	font-size: pixelsToRem(42);
-	font-style: italic;
-
-	p {
-		@include tools-mixins-elements-reset();
-	}
-
-}
-
 .wp-block-separator {
 	margin: 0;
 	color: var(--separator__color);

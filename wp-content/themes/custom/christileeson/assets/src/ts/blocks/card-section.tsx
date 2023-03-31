@@ -23,12 +23,21 @@ export const settings: BlockConfiguration = {
   icon: 'text',
   category: 'layout',
   attributes: {},
+  supports: {
+    align: true,
+    spacing: {
+      blockGap: true,
+      margin: true,
+      padding: true
+    }
+  },
   save: () => {
-    useBlockProps.save();
+    const blockProperties = useBlockProps.save();
     const { className } = attributes;
+    const classes: string[] = [blockProperties.className as string, className];
 
     return (
-      <div className={className}>
+      <div {...blockProperties} className={classes.join(' ')}>
         <InnerBlocks.Content />
       </div>
     );
@@ -36,12 +45,11 @@ export const settings: BlockConfiguration = {
   edit: () => {
     const blockProperties = useBlockProps();
     const { className } = attributes;
+    const classes: string[] = [blockProperties.className as string, className];
 
     return (
-      <div {...blockProperties}>
-        <div className={className}>
-          <InnerBlocks template={blockTemplate} allowedBlocks={allowedBlocks} templateLock={false} />
-        </div>
+      <div {...blockProperties} className={classes.join(' ')}>
+        <InnerBlocks template={blockTemplate} allowedBlocks={allowedBlocks} templateLock={false} />
       </div>
     );
   }
