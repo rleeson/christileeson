@@ -3,36 +3,9 @@
 .card {
 	&__section {
 		display: grid;
-		grid-gap: var(--size__gap-full);
-		padding: var(--size__gap-full);
 
 		@include sizes-fullsize() {
 			grid-template-columns: 1fr 1fr;
-		}
-	}
-
-	&__icon {
-		display: flex;
-		flex-direction: column;
-		gap: pixelsToRem(10);
-		padding: pixelsToRem(30);
-
-		& > * {
-			@include tools-mixins-elements-reset();
-		}
-		h3 {
-			color: var(--cards__heading-color);
-			font-size: 2rem;
-			line-height: 1.2;
-		}
-		p {
-			line-height: 1.5;
-		}
-		figure, img {
-			padding-bottom: pixelsToRem(30);
-		}
-		figure > img {
-			padding-bottom: 0;
 		}
 	}
 }

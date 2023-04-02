@@ -1,11 +1,12 @@
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { BlockConfiguration, TemplateArray } from '@wordpress/blocks';
 import React from 'react';
+import Classes from '@/ts/utilities/classes';
 
 export const name = 'cl/card-section';
 
 const allowedBlocks: string[] = [
-  'cl/icon-card'
+  'cl/image-card'
 ];
 
 const attributes = {
@@ -13,8 +14,8 @@ const attributes = {
 };
 
 const blockTemplate: TemplateArray = [
-  ['cl/icon-card', {}],
-  ['cl/icon-card', {}]
+  ['cl/image-card', {}],
+  ['cl/image-card', {}]
 ];
 
 export const settings: BlockConfiguration = {
@@ -33,22 +34,20 @@ export const settings: BlockConfiguration = {
   },
   save: () => {
     const blockProperties = useBlockProps.save();
-    const { className } = attributes;
-    const classes: string[] = [blockProperties.className as string, className];
+    const classes:Classes = Classes.fromMany([(blockProperties.className ?? '') as string, attributes.className] );
 
     return (
-      <div {...blockProperties} className={classes.join(' ')}>
+      <div {...blockProperties} className={classes.toString()}>
         <InnerBlocks.Content />
       </div>
     );
   },
   edit: () => {
     const blockProperties = useBlockProps();
-    const { className } = attributes;
-    const classes: string[] = [blockProperties.className as string, className];
+    const classes:Classes = Classes.fromMany([(blockProperties.className ?? '') as string, attributes.className] );
 
     return (
-      <div {...blockProperties} className={classes.join(' ')}>
+      <div {...blockProperties} className={classes.toString()}>
         <InnerBlocks template={blockTemplate} allowedBlocks={allowedBlocks} templateLock={false} />
       </div>
     );

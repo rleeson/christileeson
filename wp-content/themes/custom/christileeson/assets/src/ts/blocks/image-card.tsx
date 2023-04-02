@@ -1,8 +1,9 @@
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { BlockConfiguration, TemplateArray } from '@wordpress/blocks';
 import React from 'react';
+import Classes from '@/ts/utilities/classes';
 
-export const name = 'cl/icon-card';
+export const name = 'cl/image-card';
 
 const blockTemplate: TemplateArray = [
   ['core/image', { align:'center' }],
@@ -11,34 +12,32 @@ const blockTemplate: TemplateArray = [
 ];
 
 const attributes = {
-  className: 'card__icon'
+  className: 'card__image'
 };
 
 export const settings: BlockConfiguration = {
-  title: 'Icon Card',
+  title: 'Image Card',
   apiVersion: 2,
   icon: 'text',
   category: 'layout',
   attributes: {},
   save: () => {
-    useBlockProps.save();
-    const { className } = attributes;
+    const blockProperties = useBlockProps.save();
+    const classes:Classes = Classes.fromMany([(blockProperties.className ?? '') as string, attributes.className] );
 
     return (
-      <div className={className}>
+      <div {...blockProperties} className={classes.toString()}>
         <InnerBlocks.Content />
       </div>
     );
   },
   edit: () => {
     const blockProperties = useBlockProps();
-    const { className } = attributes;
+    const classes:Classes = Classes.fromMany([(blockProperties.className ?? '') as string, attributes.className] );
 
     return (
-      <div {...blockProperties}>
-        <div className={className}>
+      <div {...blockProperties} className={classes.toString()}>
           <InnerBlocks template={blockTemplate} templateLock={'all'} />
-        </div>
       </div>
     );
   }
