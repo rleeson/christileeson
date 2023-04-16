@@ -78,11 +78,6 @@ add_action(
 		load_theme_textdomain( 'christileeson', get_template_directory() . '/languages' );
 
 		/*
-		* CMS Managed <title>
-		*/
-		add_theme_support( 'title-tag' );
-
-		/*
 		* Enable support for Post Thumbnails on posts and pages.
 		*/
 		add_theme_support( 'post-thumbnails', [ 'page' ] );
@@ -93,18 +88,6 @@ add_action(
 		register_nav_menus(
 			[
 				'primary' => esc_html__( 'Main Menu', 'christileeson' ),
-			]
-		);
-
-		/*
-		* Switch default core markup for search form.
-		*/
-		add_theme_support(
-			'html5',
-			[
-				'search-form',
-				'gallery',
-				'caption',
 			]
 		);
 

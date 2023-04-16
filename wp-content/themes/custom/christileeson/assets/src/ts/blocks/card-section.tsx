@@ -1,5 +1,5 @@
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
-import { BlockConfiguration, TemplateArray } from '@wordpress/blocks';
+import { BlockAttributes, BlockConfiguration, TemplateArray } from '@wordpress/blocks';
 import React from 'react';
 import Classes from '@/ts/utilities/classes';
 
@@ -9,8 +9,15 @@ const allowedBlocks: string[] = [
   'cl/image-card'
 ];
 
-const attributes = {
-  className: 'card__section'
+const attributes: BlockAttributes = {
+  align: {
+    type: 'string',
+    default: 'wide'
+  },
+  className: 'card__section',
+  layout: {
+    type: "constrained"
+  }
 };
 
 const blockTemplate: TemplateArray = [
@@ -23,9 +30,9 @@ export const settings: BlockConfiguration = {
   apiVersion: 2,
   icon: 'text',
   category: 'layout',
-  attributes: {},
+  attributes: attributes,
   supports: {
-    align: true,
+    align: [ 'full', 'wide' ],
     spacing: {
       blockGap: true,
       margin: true,

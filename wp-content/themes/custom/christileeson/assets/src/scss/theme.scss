@@ -20,11 +20,16 @@ $asset_root: '../' !default;
 
 // All Site-wide :root variables and Web font declarations
 @use 'theme-setup' with ($root_path: $asset_root);
+@use 'theme-configuration' as *;
 
 @use 'structure';
 @use 'cms/admin-bar';
 @use 'blocks';
 @use 'components/buttons';
+
+:root {
+	font-size: #{rootFontPixelSize() * 1px};
+}
 
 .site-main {
 	@include meta.load-css('content');

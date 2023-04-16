@@ -8,4 +8,10 @@
 			grid-template-columns: 1fr 1fr;
 		}
 	}
+
+	&__image {
+		display: grid;
+		grid-gap: var(--wp--preset--spacing--10-small);
+		padding: var(--wp--preset--spacing--50-card);
+	}
 }

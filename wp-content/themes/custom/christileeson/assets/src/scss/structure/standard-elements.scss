@@ -1,15 +1,15 @@
 @use '@/scss/theme-configuration' as *;
 
 .aligncenter {
-	align-self: center;
+	justify-self: center;
 }
 
 .alignleft {
-	align-self: flex-start;
+	justify-self: flex-start;
 }
 
 .alignright {
-	align-self: flex-end;
+	justify-self: flex-end;
 }
 
 .visually-hidden {

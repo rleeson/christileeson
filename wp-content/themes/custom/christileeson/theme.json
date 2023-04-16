@@ -121,12 +121,13 @@
                 "heading": 1.2
             },
             "sizes": {
-                "full-breakpoint": "56.88889rem"
+                "full-breakpoint": "56.88889rem",
+                "maximum-width": "80rem"
             }
         },
         "layout": {
-            "contentSize": "80rem",
-            "wideSize": "80rem"
+            "contentSize": "var(--wp--custom--sizes--maximum-width)",
+            "wideSize": "var(--wp--custom--sizes--maximum-width)"
         },
         "spacing": {
             "customSpacingSize": false,
@@ -195,7 +196,7 @@
                 },
                 {
                     "slug": "heading-5",
-                    "size": "1.5rem",
+                    "size": "1.333rem",
                     "name": "Heading 5"
                 },
                 {
@@ -281,20 +282,14 @@
     },
     "styles": {
         "blocks": {
-            "cl/card-section": {
+            "core/cover": {
                 "spacing": {
-                    "blockGap": "var(--wp--preset--spacing--50-card)",
-                    "padding": {
-                        "bottom": "var(--wp--preset--spacing--60-section)",
-                        "left": "var(--wp--preset--spacing--60-section)",
-                        "right": "var(--wp--preset--spacing--60-section)",
-                        "top": "var(--wp--preset--spacing--60-section)"
-                    }
+                    "blockGap": "var(--wp--preset--spacing--40-body)"
                 }
             },
             "core/group": {
                 "spacing": {
-                    "blockGap": "var(--wp--preset--spacing--50-card)",
+                    "blockGap": "var(--wp--preset--spacing--60-section)",
                     "padding": {
                         "bottom": "var(--wp--preset--spacing--60-section)",
                         "left": "var(--wp--preset--spacing--60-section)",

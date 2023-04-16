@@ -6,7 +6,7 @@ import Classes from '@/ts/utilities/classes';
 export const name = 'cl/image-card';
 
 const blockTemplate: TemplateArray = [
-  ['core/image', { align:'center' }],
+  ['core/image', { align: 'center' }],
   ['core/heading', { level: 3, placeholder: 'Title' }],
   ['core/paragraph', { placeholder: 'Details' }],
 ];
@@ -20,7 +20,14 @@ export const settings: BlockConfiguration = {
   apiVersion: 2,
   icon: 'text',
   category: 'layout',
-  attributes: {},
+  attributes: attributes,
+  supports: {
+    spacing: {
+      blockGap: true,
+      margin: true,
+      padding: true
+    }
+  },
   save: () => {
     const blockProperties = useBlockProps.save();
     const classes:Classes = Classes.fromMany([(blockProperties.className ?? '') as string, attributes.className] );
