@@ -1,0 +1,61 @@
+@use '@/scss/theme-configuration' as *;
+
+.hero {
+	&__home {
+		display: flex;
+		position: relative;
+		box-shadow: 0 pixelsToRem(15) pixelsToRem(25) rgba(0, 0, 0, 0.15);
+
+		&-background {
+			display: block;
+			position: absolute;
+			z-index: -1;
+			bottom: 0;
+			width: 100%;
+			height: 75vw;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		&-content {
+			display: grid;
+			grid-template-areas: 'hero-description' 'hero-image';
+			max-width: var(--wp--custom--sizes--maximum-width);
+			margin: 0 auto;
+
+			& > .wp-block-group {
+				grid-area: hero-description;
+			}
+
+			& > .wp-block-image {
+				grid-area: hero-image;
+				margin: 0;
+			}
+		}
+
+		@include sizes-fullsize() {
+			max-height: pixelsToRem(717);
+
+			&-background {
+				top: 0;
+				height: 100%;
+			}
+
+			&-content {
+				grid-template-areas: 'hero-description hero-image';
+				grid-template-columns: pixelsToRem(465) 1fr;
+                
+				& > .wp-block-image {
+					max-height: 100%;
+					overflow: hidden;
+                    
+					& > img {
+						width: auto;
+						max-width: initial;
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+}

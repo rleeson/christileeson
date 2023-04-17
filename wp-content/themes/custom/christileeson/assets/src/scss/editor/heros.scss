@@ -1,0 +1,38 @@
+@use '@/scss/theme-configuration' as *;
+
+.hero {
+	&__home {
+		display: block;
+		max-height: 717px;
+
+		&-content > .block-editor-inner-blocks > .block-editor-block-list__layout {
+			display: grid;
+			grid-template-areas: 'hero-description' 'hero-image';
+			max-width: var(--wp--custom--sizes--maximum-width);
+			margin: 0 auto;
+
+			& > .wp-block-group {
+				grid-area: hero-description;
+			}
+
+			& > .wp-block-image {
+				grid-area: hero-image;
+				margin: 0;
+			}
+
+			@include sizes-fullsize() {
+				grid-template-areas: 'hero-description hero-image';
+				grid-template-columns: 465px auto;
+				grid-template-rows: 717px;
+				max-width: 1400px;
+			}
+		}
+
+		&-background {
+			z-index: 0;
+			right: -20vw;
+			left: -20vw;
+			width: 140vw;
+		}
+	}
+}
