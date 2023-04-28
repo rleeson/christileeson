@@ -140,6 +140,20 @@ const refreshChangedBlocks = (changedNames: Array<string>, currentBlockId: strin
 	}
 };
 
+const registerBlockStyles = () => {
+	// Button styles
+	window.wp.blocks.registerBlockStyle('core/button', {
+		name: 'button-secondary',
+		label: 'Secondary'
+	});
+	window.wp.blocks.registerBlockStyle('core/button', {
+		name: 'button-secondary-reversed',
+		label: 'Secondary (Reversed)',
+	});
+}
+
+registerBlockStyles();
+
 autoLoad({
 	fileContext: () => require.context("./blocks", true, /\.[jt]sx$/),
 	register: ({ name, settings }: BlockModule) => registerBlockType<Record<string, any>>(name, settings),

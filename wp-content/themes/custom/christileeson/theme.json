@@ -107,6 +107,9 @@
             "color": {
                 "background": "var(--wp--preset--color--snow)",
                 "border": "var(--wp--preset--color--pale-grey)",
+                "button": "var(--wp--preset--color--tropical-sky-dark)",
+                "button-secondary": "var(--wp--preset--color--tangerine-saturated)",
+                "button-text": "var(--wp--preset--color--snow)",
                 "heading": "var(--wp--preset--color--ocean-dk)",
                 "heading-inverted": "var(--wp--preset--color--snow)",
                 "heading-subtitle": "var(--wp--preset--color--night)",
@@ -393,6 +396,48 @@
                 "typography": {
                     "fontSize": "var(--wp--preset--font-size--standard)",
                     "lineHeight": "var(--wp--custom--line-height--heading)"
+                }
+            },
+            "button": {
+                "typography": {
+					"fontSize": "1.33rem",
+                    "lineHeight": "1"
+				},
+				"color": {
+					"background": "var(--wp--custom--color--button)",
+					"text": "var(--wp--custom--color--button-text)"
+				},
+				"border": {
+                    "color": "transparent",
+					"radius": "8px",
+					"width": "2px",
+					"style": "solid"
+				},
+                "spacing": {
+                    "padding": {
+                        "bottom": "1.1111rem",
+                        "left": "1.1111rem",
+                        "right": "1.1111rem",
+                        "top": "1.1111rem"
+                    }
+                },
+                ":focus": {
+                    "color": {
+                        "background": "var(--wp--custom--color--button-text)",
+                        "text": "var(--wp--custom--color--button)"
+                    },
+                    "border": {
+                        "color": "currentColor"
+                    }    
+                },
+                ":hover": {
+                    "color": {
+                        "background": "var(--wp--custom--color--button-text)",
+                        "text": "var(--wp--custom--color--button)"
+                    },
+                    "border": {
+                        "color": "currentColor"
+                    }    
                 }
             }
         },

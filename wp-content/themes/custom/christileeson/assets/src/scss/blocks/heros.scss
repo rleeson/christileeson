@@ -15,6 +15,10 @@
 			height: 75vw;
 			background-repeat: no-repeat;
 			background-position: center;
+
+			@include tools-mixins-sizes-breakpoint-above(956px) {
+				height: 717px;
+			}	
 		}
 
 		&-content {
@@ -31,6 +35,20 @@
 				grid-area: hero-image;
 				margin: 0;
 			}
+
+			
+			.wp-block-buttons {
+				@include tools-mixins-sizes-breakpoint-below(1023px) {
+					&.is-content-justification-center {
+						justify-content: flex-start;
+					}
+
+					.wp-block-button {
+						width: 100%;
+						max-width: pixelsToRem(465);
+					}
+				}
+			}
 		}
 
 		@include sizes-fullsize() {
@@ -43,7 +61,7 @@
 
 			&-content {
 				grid-template-areas: 'hero-description hero-image';
-				grid-template-columns: pixelsToRem(465) 1fr;
+				grid-template-columns: pixelsToRem(525) 1fr;
                 
 				& > .wp-block-image {
 					max-height: 100%;
@@ -54,6 +72,14 @@
 						max-width: initial;
 						height: 100%;
 					}
+				}
+			}
+		}
+
+		@include tools-mixins-sizes-breakpoint-above(1440px) {
+			&-content {
+				& > .wp-block-image {
+					overflow: visible;
 				}
 			}
 		}
