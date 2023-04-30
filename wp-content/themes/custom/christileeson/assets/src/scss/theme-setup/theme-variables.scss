@@ -57,6 +57,7 @@ $static_image_path: $root_path + 'static/images/';
 	--header__text-full: var(--color__night);
 
 	// Header Controls
+	--header__close-button: url('#{$static_image_path}close-button.svg');
 	--header__icon-linkedin: url('#{$static_image_path}icon-linkedin.svg');
 	--header__icon-search: url('#{$static_image_path}icon-search.svg');
 	--header__icon-youtube: url('#{$static_image_path}icon-youtube.svg');

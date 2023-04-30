@@ -82,7 +82,7 @@
 							class="screen-reader-text"
 						><?php echo esc_html__( 'Close Menu', 'christileeson' ); ?></span></button>					
 					<nav
-						class="=mobile__main-navigation"
+						class="mobile__main-navigation"
 						aria-label="<?php echo esc_attr__( 'Mobile main navigation', 'christileeson' ); ?>"
 					>
 					<?php

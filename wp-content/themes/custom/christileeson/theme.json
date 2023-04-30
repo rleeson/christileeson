@@ -113,6 +113,11 @@
                 "heading": "var(--wp--preset--color--ocean-dk)",
                 "heading-inverted": "var(--wp--preset--color--snow)",
                 "heading-subtitle": "var(--wp--preset--color--night)",
+                "mobile-menu-background": "var(--wp--preset--color--tropical-sky-dark)",
+                "mobile-menu-link-background": "transparent",
+                "mobile-menu-link-background-active": "var(--wp--preset--color--tangerine-saturated)",
+                "mobile-menu-link-text": "var(--wp--preset--color--snow)",
+                "mobile-menu-link-text-active": "var(--wp--preset--color--snow)",
                 "text": "var(--wp--preset--color--night)"
             },
             "font-families": {
