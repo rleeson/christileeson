@@ -44,7 +44,7 @@ const blockTemplate: TemplateArray = [
 ];
 
 const backgroundImage = (id: number, url: string): JSX.Element => {
-  const srcUrl = 'url("' + url + '")';
+  const srcUrl = "url('" + url + "')";
   return 0 < id
     ? <div className='hero__home-background' style={{backgroundImage: srcUrl}} />
     : <></>;
