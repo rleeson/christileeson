@@ -88,8 +88,8 @@
 					<?php
 						wp_nav_menu(
 							[
-								'theme_location' => 'main-navigation',
-								'menu_id'        => 'main-navigation',
+								'theme_location' => 'primary',
+								'menu_id'        => 'mobile-navigation',
 								'container'      => false,
 								'echo'           => true,
 								'depth'          => 1,
