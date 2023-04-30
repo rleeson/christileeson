@@ -11,17 +11,23 @@ const openClass = () => {
     return 'mobile-navigation__' + configuration.menuOpenClassPostfix ?? 'open';
 }
 
-
 const closeMenuHandler = () => {
     document.body.classList.remove(openClass())
     configuration.menu?.classList.remove(openClass()); 
+    configuration.menu?.querySelectorAll(configuration.closeSelector).forEach((closeButton) => {
+        closeButton.setAttribute('tabindex', '-1');
+    });
 }
 
 const openMenuHandler = () => {
     if( configuration.menu && !configuration.menu.classList.contains(openClass()) ) {
         document.body.classList.add(openClass());
         configuration.menu.classList.add(openClass());
-    }      
+
+        configuration.menu.querySelectorAll(configuration.closeSelector).forEach((closeButton) => {
+            closeButton.setAttribute('tabindex', '0');
+        });
+    }
 }
 
 const setup = (setupConfiguration: MobileNavigationConfiguration) => { 

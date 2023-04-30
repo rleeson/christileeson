@@ -93,6 +93,8 @@
 								'container'      => false,
 								'echo'           => true,
 								'depth'          => 1,
+								'link_after'     => '</span>',
+								'link_before'    => '<span class="text">',
 							]
 						);
 						?>
