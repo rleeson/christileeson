@@ -13,5 +13,19 @@
 		display: grid;
 		grid-gap: var(--wp--preset--spacing--10-small);
 		padding: var(--wp--preset--spacing--50-card);
+
+		&.is-style-card-hover-grow {
+			&:focus,
+			&:hover {
+				transform: scale(1.05);
+				box-shadow: pixelsToRem(5) pixelsToRem(5) pixelsToRem(22) rgba(0, 0, 0, 0.15);
+			}
+		}
+
+		.wp-block-image {
+			& > a {
+				display: block;
+			}
+		}
 	}
 }

@@ -24,8 +24,8 @@ $asset_root: '../' !default;
 
 @use 'structure';
 @use 'cms/admin-bar';
+@use 'core-blocks';
 @use 'blocks';
-@use 'components/buttons';
 
 :root {
 	font-size: #{rootFontPixelSize() * 1px};

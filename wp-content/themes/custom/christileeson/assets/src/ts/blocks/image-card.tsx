@@ -22,6 +22,10 @@ export const settings: BlockConfiguration = {
   category: 'layout',
   attributes: attributes,
   supports: {
+    color: {
+      background: true,
+      text: false
+    },
     spacing: {
       blockGap: true,
       margin: true,

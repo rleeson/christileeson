@@ -4,7 +4,7 @@
     "settings": {
         "appearanceTools": true,
         "color": {
-            "background": false,
+            "background": true,
             "customGradient": false,
             "defaultDuotone": false,
             "defaultGradients": false,
@@ -130,6 +130,7 @@
             },
             "sizes": {
                 "full-breakpoint": "56.88889rem",
+                "hero-full-height": "717px",
                 "maximum-width": "80rem"
             }
         },
@@ -171,6 +172,16 @@
                     "size": "clamp(1.66rem, calc(3.33*(100vw - var(--wp--custom--sizes--full-breakpoint))), 3.33rem)",
                     "slug": "60-section",
                     "name": "Section"
+                },
+                {
+                    "size": "clamp(3.33rem, calc(4.44*(100vw - var(--wp--custom--sizes--full-breakpoint))), 4.44rem)",
+                    "slug": "70-massive",
+                    "name": "Massive"
+                },
+                {
+                    "size": "clamp(4.44rem, calc(8.88*(100vw - var(--wp--custom--sizes--full-breakpoint))), 8.88rem)",
+                    "slug": "70-collosal",
+                    "name": "Collosal"
                 }
             ],
             "units": [
@@ -259,6 +270,11 @@
                     ]
                 }
             },
+            "core/paragraph": {
+                "color": {
+                    "background": false
+                }
+            },
             "core/post-title": {
                 "color": {
                     "background": false,
@@ -279,11 +295,6 @@
                             "color": "var(--wp--custom--color--heading-inverted)"
                         }
                     ]
-                }
-            },
-            "core/group": {
-                "color": {
-                    "background": true
                 }
             }
         }
@@ -339,6 +350,12 @@
                     "fontSize": "var(--wp--preset--font-size--heading-1)"
                 }
             },
+            "core/list": {
+                "typography": {
+                    "fontSize": "var(--wp--preset--font-size--standard)",
+                    "lineHeight": "var(--wp--custom--line-height--body)"
+                }
+            },
             "core/paragraph": {
                 "color": {
                     "text": "var(--wp--custom--color--text)"
@@ -352,7 +369,7 @@
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--normal)",
+                    "fontSize": "var(--wp--preset--font-size--standard)",
                     "lineHeight": "var(--wp--custom--line-height--body)"
                 }
             },

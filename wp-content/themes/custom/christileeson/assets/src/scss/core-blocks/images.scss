@@ -1,0 +1,16 @@
+@use '@/scss/theme-configuration' as *;
+
+figure.is-style-image-rounded-shadow {
+	margin: 0;
+	padding: 0 pixelsToRem(30) pixelsToRem(30) 0;
+	
+	img {
+		border-radius: 0 0 pixelsToRem(60) 0;
+		filter: drop-shadow(pixelsToRem(5) pixelsToRem(5) pixelsToRem(22) rgba(0, 0, 0, 0.15));
+	}
+}
+
+img.is-style-image-rounded-shadow {
+	border-radius: 0 0 pixelsToRem(60) 0;
+	filter: drop-shadow(pixelsToRem(5) pixelsToRem(5) pixelsToRem(22) rgba(0, 0, 0, 0.15));
+}

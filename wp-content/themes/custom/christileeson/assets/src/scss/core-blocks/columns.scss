@@ -1,0 +1,9 @@
+@use '@/scss/theme-configuration' as *;
+
+.is-style-columns-shadow {
+	filter: drop-shadow(pixelsToRem(5) pixelsToRem(5) pixelsToRem(22) rgba(0, 0, 0, 0.15));
+}
+
+.is-style-column-shadow {
+	filter: drop-shadow(pixelsToRem(5) pixelsToRem(5) pixelsToRem(22) rgba(0, 0, 0, 0.15));
+}

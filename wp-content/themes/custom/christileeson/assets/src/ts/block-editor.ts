@@ -150,6 +150,22 @@ const registerBlockStyles = () => {
 		name: 'button-secondary-reversed',
 		label: 'Secondary (Reversed)',
 	});
+	window.wp.blocks.registerBlockStyle('core/column', {
+		name: 'column-shadow',
+		label: 'Shadow',
+	});
+	window.wp.blocks.registerBlockStyle('core/columns', {
+		name: 'columns-shadow',
+		label: 'Shadow',
+	});
+	window.wp.blocks.registerBlockStyle('core/image', {
+		name: 'image-rounded-shadow',
+		label: 'Rounded Shadow',
+	});
+	window.wp.blocks.registerBlockStyle('cl/image-card', {
+		name: 'card-hover-grow',
+		label: 'Hover Grow',
+	});
 }
 
 registerBlockStyles();

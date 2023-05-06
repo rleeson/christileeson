@@ -4,10 +4,6 @@
 	&__home {
 		display: block;
 		
-		@include tools-mixins-sizes-breakpoint-above(1024px) {
-			max-height: 717px;
-		}
-
 		&-content {
 			display: block;
 
@@ -39,7 +35,7 @@
 								width: 100% !important;
 								max-width: calc(100vw - 2.222rem) !important;
 								height: auto !important;
-								max-height: 75vw !important;
+								max-height: var(--wp--custom--sizes--hero-full-height) !important;
 							}
 						}
 					}
@@ -47,7 +43,7 @@
 					@include sizes-fullsize() {
 						grid-template-areas: 'hero-description hero-image';
 						grid-template-columns: 465px auto;
-						grid-template-rows: 717px;
+						grid-template-rows: var(--wp--custom--sizes--hero-full-height);
 						max-width: 1400px;
 					}
 				}
@@ -62,7 +58,17 @@
 				right: -20vw;
 				left: -20vw;
 				width: 140vw;
-				height: 717px;
+				height: var(--wp--custom--sizes--hero-full-height);
+			}
+		}
+
+		@include tools-mixins-sizes-breakpoint-above(1024px) {
+			height: var(--wp--custom--sizes--hero-full-height);
+			max-height: var(--wp--custom--sizes--hero-full-height);
+
+			&-background,
+			&-content {
+				max-height: var(--wp--custom--sizes--hero-full-height);
 			}
 		}
 	}

@@ -1,5 +1,26 @@
 @use '@/scss/theme-configuration' as *;
 
+a {
+	text-decoration: none;
+
+	&:focus,
+	&:hover {
+		outline: none;
+		text-decoration: underline;
+		text-underline-offset: 6px;
+	}
+
+	&:visited {
+		text-decoration: none;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	a:visited {
+		color: inherit;
+	}
+}
+
 .aligncenter {
 	justify-self: center;
 }

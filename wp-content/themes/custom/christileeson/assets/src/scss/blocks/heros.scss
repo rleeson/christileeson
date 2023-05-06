@@ -15,10 +15,7 @@
 			height: 75vw;
 			background-repeat: no-repeat;
 			background-position: center;
-
-			@include tools-mixins-sizes-breakpoint-above(956px) {
-				height: 717px;
-			}	
+			background-size: cover;
 		}
 
 		&-content {
@@ -29,6 +26,7 @@
 
 			& > .wp-block-group {
 				grid-area: hero-description;
+				text-align: center;
 			}
 
 			& > .wp-block-image {
@@ -40,7 +38,7 @@
 			.wp-block-buttons {
 				@include tools-mixins-sizes-breakpoint-below(1023px) {
 					&.is-content-justification-center {
-						justify-content: flex-start;
+						justify-content: center;
 					}
 
 					.wp-block-button {
@@ -52,7 +50,12 @@
 		}
 
 		@include sizes-fullsize() {
-			max-height: pixelsToRem(717);
+			height: var(--wp--custom--sizes--hero-full-height);
+
+			&-background,
+			&-content {
+				max-height: var(--wp--custom--sizes--hero-full-height);
+			}
 
 			&-background {
 				top: 0;
@@ -62,6 +65,8 @@
 			&-content {
 				grid-template-areas: 'hero-description hero-image';
 				grid-template-columns: pixelsToRem(525) 1fr;
+				grid-template-rows: var(--wp--custom--sizes--hero-full-height);
+				overflow-x: hidden;
                 
 				& > .wp-block-image {
 					max-height: 100%;

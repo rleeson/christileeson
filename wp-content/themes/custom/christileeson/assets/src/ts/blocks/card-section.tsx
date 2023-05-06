@@ -33,6 +33,10 @@ export const settings: BlockConfiguration = {
   attributes: attributes,
   supports: {
     align: [ 'full', 'wide' ],
+    color: {
+      background: true,
+      text: false
+    },
     spacing: {
       blockGap: true,
       margin: true,
