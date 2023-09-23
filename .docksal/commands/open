@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+##
+## Opens your default browser to the current project URL or the Kanopi Pack asset listing
+##
+## Assumes Kanopi Pack is hosted on a subdomain, specified by Docksal environment variable WP_THEME_ASSETS_HOST_SUBDOMAIN
+## Also assumes the site is hosted on HTTPS
+##
+## Parameters:
+##  - [service] = (Optional) Current accepts "kanopi-pack" for Webpack Dev Server URL, "cms" for WP Admin, otherwise opens the local front-end site
+##
+## Usage: fin open [service]
+##
+
+service="$1"
+
+COMMAND="open"
+if [[ "file" = "$(type -t wslview)" ]]; then
+    COMMAND="wslview"
+fi
+
+if [[ "kanopi-pack" == "${service}" && '' != "${WP_THEME_ASSETS_HOST_SUBDOMAIN}" ]]; then
+    $COMMAND https://${WP_THEME_ASSETS_HOST_SUBDOMAIN}.${VIRTUAL_HOST}/webpack-dev-server/
+elif [[ "cms" == "${service}" && '' != "${WP_THEME_ASSETS_HOST_SUBDOMAIN}" ]]; then
+    $COMMAND https://${VIRTUAL_HOST}/wp-admin/
+else
+    $COMMAND https://${VIRTUAL_HOST}/
+fi

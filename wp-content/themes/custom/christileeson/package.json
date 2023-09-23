@@ -10,8 +10,8 @@
     "development": "kanopi-pack-react react development"
   },
   "devDependencies": {
-    "@kanopi/pack": "2.0.1",
-    "@kanopi/pack-react": "2.0.2",
+    "@kanopi/pack": "2.3.2",
+    "@kanopi/pack-react": "2.1.1",
     "@types/react": "17.0.2",
     "@types/webpack-env": "1.18.0",
     "@types/wordpress__block-editor": "11.0.1",
@@ -28,7 +28,7 @@
     "react-dom": "17.0.2"
   },
   "engines": {
-    "node": ">=16.19",
-    "npm": ">=8.19"
+    "node": ">=20",
+    "npm": ">=9"
   }
 }

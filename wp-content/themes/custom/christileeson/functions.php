@@ -30,6 +30,9 @@ function cl_register_kanopi_pack(): void {
 
 			$loader->register_vendor_script( 'vendor' );
 
+			if ( $loader->in_development_mode() ) {
+				$loader->register_runtime_script( 'central' );
+			}
 			$loader->register_runtime_script( 'runtime', [ 'jquery' ] );
 			$loader->register_style( 'theme' );
 			$loader->register_script( 'main', [ 'wp-element' ] );
@@ -53,6 +56,9 @@ function cl_register_kanopi_pack(): void {
 
 			$loader->register_vendor_script( 'vendor' );
 
+			if ( $loader->in_development_mode() ) {
+				$loader->register_runtime_script( 'central' );
+			}
 			$loader->register_runtime_script( 'runtime', [ 'jquery' ] );
 			$loader->register_style( 'block-editor-theme' );
 			$loader->register_script( 'block-editor' );

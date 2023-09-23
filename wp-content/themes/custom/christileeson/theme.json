@@ -303,7 +303,13 @@
         "blocks": {
             "core/cover": {
                 "spacing": {
-                    "blockGap": "var(--wp--preset--spacing--40-body)"
+                    "blockGap": "var(--wp--preset--spacing--40-body)",
+                    "padding": {
+                        "bottom": "0",
+                        "left": "var(--wp--preset--spacing--20-gap)",
+                        "right": "var(--wp--preset--spacing--20-gap)",
+                        "top": "0"
+                    }
                 }
             },
             "core/group": {
