@@ -26,7 +26,7 @@
     "sort-packages": true,
     "platform-check": false,
     "platform": {
-      "php": "8.0"
+      "php": "8.2"
     },
     "allow-plugins": {
       "composer/installers": true,
@@ -43,9 +43,9 @@
     }
   },
   "require-dev": {
-    "automattic/vipwpcs": "dev-develop",
+    "automattic/vipwpcs": "~3.0.0",
     "phpcompatibility/php-compatibility": "10.x-dev",
-    "wp-cli/wp-cli-bundle": "2.6.x-dev"
+    "wp-cli/wp-cli-bundle": "~2.9.0"
   },
   "scripts": {
     "compile-theme-translations": "./mu-plugins/vendor/bin/wp i18n make-mo themes/custom/christileeson/languages",

@@ -9,8 +9,8 @@
         }
     ],
     "require-dev": {
-        "php": "~8.0.0",
-        "johnpbloch/wordpress-core": "^6.2.0"
+        "php": "~8.2.0",
+        "johnpbloch/wordpress-core": "~6.4.0"
     },
     "config": {
         "vendor-dir": "vendor",
@@ -18,7 +18,7 @@
         "optimize-autoloader": true,
         "sort-packages": true,
         "platform": {
-            "php": "8.0"
+            "php": "8.2"
         }
     },
     "scripts": {

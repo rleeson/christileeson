@@ -5,7 +5,6 @@
 	<arg value="ps"/>
     <arg name="extensions" value="php"/>
     <arg name="basepath" value="./"/><!-- Strip the file paths down to the relevant bit -->
-    <arg name="parallel" value="8"/><!-- Enables parallel processing when available for faster results. -->
 
 	<!--
 	Prevent errors caused by WordPress Coding Standards not supporting PHP 8.0+.
@@ -28,7 +27,7 @@
 	<exclude-pattern>*/themes/custom/christileeson/node_modules/*</exclude-pattern>
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->
-	<config name="testVersion" value="8.0"/>
+	<config name="testVersion" value="8.2"/>
 	<rule ref="PHPCompatibility"/>
 
 	<!-- WordPress VIP Go Standards: Extends WordPress Code Style -->
@@ -40,7 +39,7 @@
 	<!-- Include WordPress Core Rulesets with the following Exceptions -->
 	<rule ref="WordPress">
 		<exclude name="WordPress-Docs"/>
-		<exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
 		<exclude name="Generic.Commenting.DocComment"/>
 		<exclude name="Squiz.Commenting.FileComment"/>
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
@@ -58,16 +57,16 @@
 	</rule>
 	
 	<!-- Ignore white-space in Comments and Inline HTML -->
-	<rule ref="WordPress.WhiteSpace.PrecisionAlignment">
+	<rule ref="Universal.WhiteSpace.PrecisionAlignment">
 		<properties>
-			<property name="ignoreAlignmentTokens" type="array" value="T_COMMENT,T_INLINE_HTML,T_DOC_COMMENT_WHITESPACE"/>
+			<property name="ignoreAlignmentBefore" type="array" value="T_COMMENT,T_INLINE_HTML,T_DOC_COMMENT_WHITESPACE"/>
 		</properties>
 	</rule>
 
 	<!-- Verify compatability of WP Functions for a given version or higher -->
 	<rule ref="WordPress.WP.DeprecatedFunctions">
 		<properties>
-			<property name="minimum_supported_version" value="6.1" />
+			<property name="minimum_wp_version" value="6.4" />
 		</properties>
 	</rule>
 </ruleset>

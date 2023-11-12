@@ -53,6 +53,7 @@ wp-trackback.php
 xmlrpc.php
 wp-admin
 wp-includes
+wp-content/ewww
 wp-content/mu-plugins/*
 wp-content/uploads
 wp-content/plugins/*
