@@ -10,9 +10,9 @@ module.exports = {
         "allowedHosts": [
             '.docksal.site',
         ],
-        "sockPort": 443,
-        "useSslProxy": true,
-        "useProxy": true,
+        "sockPort": 80,
+        "useSslProxy": false,
+        "useProxy": false,
         "watchOptions": {
             "poll": true
         }
