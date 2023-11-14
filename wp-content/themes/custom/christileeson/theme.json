@@ -387,7 +387,7 @@
 		},
 		"color": {
 			"background": "var(--wp--custom--color--background)",
-			"text": "var(--wp--custom--color--background)"
+			"text": "var(--wp--custom--color--text)"
 		},
 		"elements": {
 			"h1": {
