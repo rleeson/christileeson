@@ -1,0 +1,14 @@
+#!/bin/bash
+
+## Install mkcert for locally-trusted HTTPS certificates
+##
+## Usage: fin init-https
+
+# install mkcert globally
+fin addon install mkcert -g
+
+# generate cert for a project
+fin mkcert create
+
+# reset vhost-proxy to pick-up the new cert
+fin system reset vhost-proxy

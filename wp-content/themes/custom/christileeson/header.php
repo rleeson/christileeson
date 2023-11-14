@@ -20,41 +20,19 @@
 </head>
 <body <?php body_class(); ?>>
 	<a class="skip-link button__inverted screen-reader-text" href="#content">
-	<?php 
-		esc_html_e( 'Skip to content', 'christileeson' ); 
+	<?php
+		esc_html_e( 'Skip to content', 'christileeson' );
 	?>
 		</a>
 	<header class="header">
 		<div class="header__logo">
 			<a class="header__logo-link" href="<?php echo esc_url( home_url() ); ?>" rel="home">
-				<span class="screen-reader-text"><?php bloginfo( 'name' ); ?> <?php 
-					echo esc_html__( 'Home Page', 'christileeson' ); 
+				<span class="screen-reader-text"><?php bloginfo( 'name' ); ?> <?php
+					echo esc_html__( 'Home Page', 'christileeson' );
 				?>
 					</span></a>
 		</div>
 		<div class="header__controls">
-			<button class="search__open" aria-expanded="false" aria-controls="header__search">
-				<span class="screen-reader-text"><?php echo esc_html__( 'Open Search', 'christileeson' ); ?></span></button>
-			<section
-				class="header__search"
-				aria-label="<?php echo esc_attr__( 'Search', 'christileeson' ); ?>"
-				aria-hidden="true"
-			>
-			<?php
-				get_search_form(
-					[
-						'container_classes' => [ 'search__form' ],
-						'input_label_id'    => 'utility-menu-search',
-						'max_length'        => '200',
-						'placeholder_text'  => __( 'Search', 'christileeson' ),
-						'label_text'        => __( 'Search in ', 'christileeson' ) . home_url( '/' ),
-						'label_is_sr'       => true,
-					] 
-				);
-				?>
-				<button class="search__close">
-					<span class="screen-reader-text"><?php echo esc_html__( 'Close Search', 'christileeson' ); ?></span></button>
-			</section>
 			<nav
 				class="header__main-navigation"
 				aria-label="<?php echo esc_attr__( 'Main navigation', 'christileeson' ); ?>"
@@ -80,7 +58,7 @@
 					<button class="mobile__menu-close" tabindex="-1"><span
 							tabindex="-1"
 							class="screen-reader-text"
-						><?php echo esc_html__( 'Close Menu', 'christileeson' ); ?></span></button>					
+						><?php echo esc_html__( 'Close Menu', 'christileeson' ); ?></span></button>
 					<nav
 						class="mobile__main-navigation"
 						aria-label="<?php echo esc_attr__( 'Mobile main navigation', 'christileeson' ); ?>"

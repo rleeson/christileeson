@@ -1,50 +1,50 @@
 const {
-    npm_lifecycle_event: currentEnvironment = "production",
-    VIRTUAL_HOST: sockHostDomain = "",
-    WP_THEME_ASSETS_HOST_SUBDOMAIN: sockHostSubdomain = ""
+	npm_lifecycle_event: currentEnvironment = "production",
+	VIRTUAL_HOST: sockHostDomain = "",
+	WP_THEME_ASSETS_HOST_SUBDOMAIN: sockHostSubdomain = ""
 } = process.env;
 
 module.exports = {
-    "devServer": {
-        "sockHost": sockHostSubdomain + '.' + sockHostDomain,
-        "allowedHosts": [
-            '.docksal.site',
-        ],
-        "sockPort": 80,
-        "useSslProxy": false,
-        "useProxy": false,
-        "watchOptions": {
-            "poll": true
-        }
-    },
-    "environment": {
-        "dotenvEnable": false
-    },
-    "externals": [
-        function ({ request }, callback) {
-            let externalRequest = defaultRequestToExternal(request);
+	"devServer": {
+		"sockHost": sockHostSubdomain + '.' + sockHostDomain,
+		"allowedHosts": [
+			'.docksal.site',
+		],
+		"sockPort": 443,
+		"useSslProxy": true,
+		"useProxy": true,
+		"watchOptions": {
+			"poll": true
+		}
+	},
+	"environment": {
+		"dotenvEnable": false
+	},
+	"externals": [
+		function ({ request }, callback) {
+			let externalRequest = defaultRequestToExternal(request);
 
-            return externalRequest ? callback(null, externalRequest) : callback();
-        }
-    ],
-    "filePatterns": {
-        "cssOutputPath": "css/[name].[contenthash].css",
-        "entryPoints": {
-            "block-editor": "./assets/src/ts/block-editor.ts",
-            "block-editor-theme": "./assets/src/scss/block-editor.scss",
-            "main": "./assets/src/ts/main.ts",
-            "theme": "./assets/src/scss/theme.scss"
-        },
-        "jsOutputPath": "js/[name].[contenthash].js"
-    },
-    "styles": {
-        "styleLintConfigFile": "./assets/configuration/tools/.stylelintrc.js",
-        "styleLintIgnorePath": "./assets/configuration/tools/.stylelintignore"
-    },
-    "scripts": {
-        "esLintFileTypes": "js,jsx,ts,tsx",
-        "useJsxSyntax": true
-    }
+			return externalRequest ? callback(null, externalRequest) : callback();
+		}
+	],
+	"filePatterns": {
+		"cssOutputPath": "css/[name].[contenthash].css",
+		"entryPoints": {
+			"block-editor": "./assets/src/ts/block-editor.ts",
+			"block-editor-theme": "./assets/src/scss/block-editor.scss",
+			"main": "./assets/src/ts/main.ts",
+			"theme": "./assets/src/scss/theme.scss"
+		},
+		"jsOutputPath": "js/[name].[contenthash].js"
+	},
+	"styles": {
+		"styleLintConfigFile": "./assets/configuration/tools/.stylelintrc.js",
+		"styleLintIgnorePath": "./assets/configuration/tools/.stylelintignore"
+	},
+	"scripts": {
+		"esLintFileTypes": "js,jsx,ts,tsx",
+		"useJsxSyntax": true
+	}
 }
 
 /**
@@ -67,33 +67,33 @@ const BUNDLED_PACKAGES = ['@wordpress/icons', '@wordpress/interface'];
  *   to ignore the request. Return `string|string[]` to map the request to an external.
  */
 function defaultRequestToExternal(request) {
-    switch (request) {
-        case 'moment':
-            return request;
+	switch (request) {
+		case 'moment':
+			return request;
 
-        case '@babel/runtime/regenerator':
-            return 'regeneratorRuntime';
+		case '@babel/runtime/regenerator':
+			return 'regeneratorRuntime';
 
-        case 'jquery':
-            return 'jQuery';
+		case 'jquery':
+			return 'jQuery';
 
-        case 'react':
-            return "development" === currentEnvironment ? undefined : 'React';
+		case 'react':
+			return "development" === currentEnvironment ? undefined : 'React';
 
-        case 'react-dom':
-            return "development" === currentEnvironment ? undefined : 'ReactDOM';
-    }
+		case 'react-dom':
+			return "development" === currentEnvironment ? undefined : 'ReactDOM';
+	}
 
-    if (BUNDLED_PACKAGES.includes(request)) {
-        return undefined;
-    }
+	if (BUNDLED_PACKAGES.includes(request)) {
+		return undefined;
+	}
 
-    if (request.startsWith(WORDPRESS_NAMESPACE)) {
-        return [
-            'wp',
-            camelCaseDash(request.substring(WORDPRESS_NAMESPACE.length)),
-        ];
-    }
+	if (request.startsWith(WORDPRESS_NAMESPACE)) {
+		return [
+			'wp',
+			camelCaseDash(request.substring(WORDPRESS_NAMESPACE.length)),
+		];
+	}
 }
 
 /**
@@ -106,5 +106,5 @@ function defaultRequestToExternal(request) {
 * @return {string} Camel-cased string.
 */
 function camelCaseDash(string) {
-    return string.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+	return string.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
 }

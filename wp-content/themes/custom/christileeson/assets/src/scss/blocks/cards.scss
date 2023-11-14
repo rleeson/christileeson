@@ -10,11 +10,13 @@
 	}
 
 	&__image {
-		display: grid;
-		grid-gap: var(--wp--preset--spacing--10-small);
+		display: flex;
+		flex-direction: column;
+		gap: var(--wp--preset--spacing--10-small);
 		padding: var(--wp--preset--spacing--50-card);
 
 		&.is-style-card-hover-grow {
+
 			&:focus,
 			&:hover {
 				transform: scale(1.05);
@@ -23,7 +25,7 @@
 		}
 
 		.wp-block-image {
-			& > a {
+			&>a {
 				display: block;
 			}
 		}

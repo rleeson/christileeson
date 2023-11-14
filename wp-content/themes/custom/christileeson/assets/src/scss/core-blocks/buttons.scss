@@ -1,7 +1,9 @@
 @use '@/scss/theme-configuration' as *;
 
 .is-style-button-secondary {
-	&, & .wp-block-button__link {
+
+	&,
+	& .wp-block-button__link {
 		@include components-button(var(--wp--custom--color--button-secondary), var(--wp--custom--color--button-text));
 	}
 
@@ -10,14 +12,14 @@
 			border-color: currentColor;
 			background-color: var(--wp--custom--color--button-text);
 			color: var(--wp--custom--color--button-secondary);
-		
+
 			&:focus,
 			&:hover {
 				border-color: var(--wp--custom--color--button-secondary);
-				background-color:var(--wp--custom--color--button-secondary);
+				background-color: var(--wp--custom--color--button-secondary);
 				color: var(--wp--custom--color--button-text);
 			}
-		
+
 			&:focus,
 			&:focus-visible {
 				outline: solid 2px var(--wp--custom--color--button-secondary);
@@ -26,7 +28,7 @@
 
 			@include sizes-fullsize() {
 				border-color: var(--wp--custom--color--button-secondary);
-				background-color:var(--wp--custom--color--button-secondary);
+				background-color: var(--wp--custom--color--button-secondary);
 				color: var(--wp--custom--color--button-text);
 
 				&:focus,
@@ -36,6 +38,19 @@
 					color: var(--wp--custom--color--button-secondary);
 				}
 			}
+		}
+	}
+}
+
+.wp-block-buttons.is-style-stack-on-mobile {
+	@include tools-mixins-sizes-breakpoint-below(1023px) {
+		&.is-content-justification-center {
+			justify-content: center;
+		}
+
+		&>.wp-block-button {
+			width: 100%;
+			max-width: pixelsToRem(465);
 		}
 	}
 }

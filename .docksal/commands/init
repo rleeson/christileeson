@@ -74,6 +74,8 @@ echo -e "${green_bg} Step 2 ${NC}${green} Initializing site...${NC}"
 fin init-site
 echo -e "${green_bg} Step 3 ${NC}${green} Initializing front-end and theme assets...${NC}"
 fin init-assets
+echo -e "${green_bg} Step 4 ${NC}${green} Adding Site Certificate...${NC}"
+fin init-https
 echo -e "${green_bg} Setup Complete! ${NC}"
 echo
 echo -e "${green} WordPress Site:${NC} ${yellow}https://${VIRTUAL_HOST}${NC}"

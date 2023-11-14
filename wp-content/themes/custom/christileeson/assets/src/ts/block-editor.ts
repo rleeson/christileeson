@@ -150,6 +150,10 @@ const registerBlockStyles = () => {
 		name: 'button-secondary-reversed',
 		label: 'Secondary (Reversed)',
 	});
+	window.wp.blocks.registerBlockStyle('core/buttons', {
+		name: 'stack-on-mobile',
+		label: 'Stack on Mobile',
+	});
 	window.wp.blocks.registerBlockStyle('core/column', {
 		name: 'column-shadow',
 		label: 'Shadow',

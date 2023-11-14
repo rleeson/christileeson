@@ -1,6 +1,8 @@
 @use '@/scss/theme-configuration' as *;
 
 .hero {
+	z-index: 0;
+
 	&__home {
 		display: flex;
 		position: relative;
@@ -9,7 +11,7 @@
 		&-background {
 			display: block;
 			position: absolute;
-			z-index: -1;
+			z-index: 0;
 			bottom: 0;
 			width: 100%;
 			height: 75vw;
@@ -20,32 +22,19 @@
 
 		&-content {
 			display: grid;
+			z-index: 1;
 			grid-template-areas: 'hero-description' 'hero-image';
 			max-width: var(--wp--custom--sizes--maximum-width);
 			margin: 0 auto;
 
-			& > .wp-block-group {
+			&>.wp-block-group {
 				grid-area: hero-description;
 				text-align: center;
 			}
 
-			& > .wp-block-image {
+			&>.wp-block-image {
 				grid-area: hero-image;
 				margin: 0;
-			}
-
-			
-			.wp-block-buttons {
-				@include tools-mixins-sizes-breakpoint-below(1023px) {
-					&.is-content-justification-center {
-						justify-content: center;
-					}
-
-					.wp-block-button {
-						width: 100%;
-						max-width: pixelsToRem(465);
-					}
-				}
 			}
 		}
 
@@ -67,12 +56,12 @@
 				grid-template-columns: pixelsToRem(525) 1fr;
 				grid-template-rows: var(--wp--custom--sizes--hero-full-height);
 				overflow-x: hidden;
-                
-				& > .wp-block-image {
+
+				&>.wp-block-image {
 					max-height: 100%;
 					overflow: hidden;
-                    
-					& > img {
+
+					&>img {
 						width: auto;
 						max-width: initial;
 						height: 100%;
@@ -83,7 +72,7 @@
 
 		@include tools-mixins-sizes-breakpoint-above(1440px) {
 			&-content {
-				& > .wp-block-image {
+				&>.wp-block-image {
 					overflow: visible;
 				}
 			}

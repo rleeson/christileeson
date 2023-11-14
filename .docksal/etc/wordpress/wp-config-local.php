@@ -89,7 +89,7 @@ define( 'WP_DEBUG_LOG', true );
 /**
  * For Front-end Development Server to be served via @kanopi/pack
  */
-define('KANOPI_DEVELOPMENT_ASSET_URL', 'http://' . getenv('WP_THEME_ASSETS_HOST_SUBDOMAIN') . '.' . getenv('VIRTUAL_HOST'));
+define('KANOPI_DEVELOPMENT_ASSET_URL', 'https://' . getenv('WP_THEME_ASSETS_HOST_SUBDOMAIN') . '.' . getenv('VIRTUAL_HOST'));
 
 /* That's all, stop editing! Happy publishing. */
 
