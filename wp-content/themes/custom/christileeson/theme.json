@@ -215,7 +215,7 @@
 				},
 				{
 					"slug": "heading-5",
-					"size": "1.333rem",
+					"size": "clamp(1rem, calc(2*(100vw - var(--wp--custom--sizes--full-breakpoint))), 1.3333rem)",
 					"name": "Heading 5"
 				},
 				{
