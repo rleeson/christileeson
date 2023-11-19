@@ -4,7 +4,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-    
+
 	.mobile__menu-open {
 		display: flex;
 		align-items: center;
@@ -26,7 +26,8 @@
 			background: var(--header__menu-toggle);
 		}
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			color: var(--header__menu-toggle-active);
 
 			&:after {
@@ -34,7 +35,8 @@
 			}
 		}
 
-		&:focus, &:focus-visible {
+		&:focus,
+		&:focus-visible {
 			outline-offset: 3px;
 		}
 	}
@@ -106,10 +108,13 @@
 		.menu {
 			@include tools-mixins-elements-list-reset();
 		}
+
 		.menu-item {
-			& > a {
+			font-size: 1.333rem;
+
+			&>a {
 				display: flex;
-				padding: 20px;
+				padding: 10px 20px;
 				background-color: var(--wp--custom--color--mobile-menu-link-background);
 				color: var(--wp--custom--color--mobile-menu-link-text);
 				text-decoration: none;
@@ -123,29 +128,26 @@
 
 			&.linkedin {
 				a {
-					@include tools-mixins-components-center-svg-icon(
-						pixelsToRem(20),
-						pixelsToRem(20),
-						var(--header__icon-linkedin)
-					);
-				}			
+					@include tools-mixins-components-center-svg-icon(pixelsToRem(20),
+					pixelsToRem(20),
+						var(--header__icon-linkedin));
+				}
 			}
 
 			&.youtube {
 				a {
-					@include tools-mixins-components-center-svg-icon(
-						pixelsToRem(24),
-						pixelsToRem(18),
-						var(--header__icon-youtube)
-					);
-				}			
+					@include tools-mixins-components-center-svg-icon(pixelsToRem(24),
+					pixelsToRem(18),
+						var(--header__icon-youtube));
+				}
 			}
 
 			&.linkedin,
-			&.youtube {				
+			&.youtube {
 				.text {
 					@include visually-hidden();
 				}
+
 				a {
 					justify-content: flex-start;
 					padding: 20px;
@@ -157,7 +159,7 @@
 					&:focus,
 					&:hover {
 						background-color: var(--wp--custom--color--mobile-menu-link-background-active);
-						color: var(--wp--custom--color--mobile-menu-link-text-active);	
+						color: var(--wp--custom--color--mobile-menu-link-text-active);
 					}
 				}
 			}
