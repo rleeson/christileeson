@@ -219,14 +219,29 @@
 					"name": "Heading 5"
 				},
 				{
+					"slug": "heading-4-subtitle",
+					"size": "clamp(1rem, calc(2*(100vw - var(--wp--custom--sizes--full-breakpoint))), 2rem)",
+					"name": "Heading 4 Subtitle"
+				},
+				{
 					"slug": "heading-4",
 					"size": "clamp(1.333rem, calc(2*(100vw - var(--wp--custom--sizes--full-breakpoint))), 2rem)",
 					"name": "Heading 4"
 				},
 				{
+					"slug": "heading-3-subtitle",
+					"size": "clamp(1.333rem, calc(2.333*(100vw - var(--wp--custom--sizes--full-breakpoint))), 2.333rem)",
+					"name": "Heading 3 Subtitle"
+				},
+				{
 					"slug": "heading-3",
 					"size": "clamp(2rem, calc(2.333*(100vw - var(--wp--custom--sizes--full-breakpoint))), 2.333rem)",
 					"name": "Heading 3"
+				},
+				{
+					"slug": "heading-2-small",
+					"size": "clamp(1.333rem, calc(3.333*(100vw - var(--wp--custom--sizes--full-breakpoint))), 3.333rem)",
+					"name": "Heading 2 Small"
 				},
 				{
 					"slug": "heading-2-subtitle",
